@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { api } from '@/lib/api/server'
 import ProductCard from '@/components/catalog/ProductCard'
 import CategorySidebar from '@/components/catalog/CategorySidebar'
