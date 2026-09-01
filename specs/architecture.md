@@ -5,6 +5,8 @@
 **Framework** : Next.js (App Router) + TypeScript strict
 **CSS** : Tailwind CSS compilé
 **Auth** : NextAuth.js + JWT (djangorestframework-simplejwt côté backend)
+**Hébergement front** : Vercel (connecté à GitHub, déploiement automatique à chaque push)
+**Hébergement backend** : VPS (Hetzner ou OVH)
 
 ---
 

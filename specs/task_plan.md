@@ -1,41 +1,99 @@
 # Task Plan: Frontend — Signals e-commerce
 
 ## Goal
-Design and build a complete, SEO-ready frontend for a French road signage e-commerce site: Django templates for all public/catalog pages, React for the cart + Stripe checkout tunnel, and a lightweight CRM interface for staff.
+Construire un frontend Next.js (App Router, TypeScript) pour une API Django REST de vente de panneaux de signalisation. Le site cible les collectivités, mairies et professionnels du BTP.
+
+Stack : Next.js · Tailwind CSS · NextAuth.js (JWT) · MDX (blog)
+Design system : maquette Strada (`strada.html`)
+Architecture : voir `specs/architecture.md`
+
+---
 
 ## Phases
 
-- [x] Phase 0: Audit existing templates + define stack constraints
-- [x] Phase 1: Page inventory, design system decisions, open questions
-- [ ] Phase 2: Design system — token definitions, component library choice, base layout polish
-- [ ] Phase 3: Django template pages — home, catalog, product detail, account pages
-- [ ] Phase 4: HTMX interactions — cart badge, add-to-cart feedback, mobile nav
-- [ ] Phase 5: React cart + checkout tunnel — cart drawer/page, address form, order summary, Stripe redirect
-- [ ] Phase 6: Account portal — order history, order detail, profile (Django templates)
-- [ ] Phase 7: CRM interface — order list + status transitions, customer detail, address edit
-- [ ] Phase 8: QA — mobile, SEO audit (Lighthouse), cross-browser
-- [ ] Phase 9: V2 placeholder — SVG configurator scaffold (component shell only, no logic)
+### ✅ Phase 0 — Initialisation
+- [x] Scaffold Next.js (App Router, TypeScript, Tailwind)
+- [x] Design tokens Strada dans `globals.css`
+- [x] ThemeProvider (dark mode, localStorage)
+- [x] Layout global : Navbar + Footer
 
-## Key Questions
-→ See open_questions.md for full list
+### ✅ Phase 1 — Page d'accueil
+- [x] HeroSection
+- [x] TrustBar
+- [x] CategoriesSection
+- [x] ProductsSection (données statiques + filtres)
+- [x] WhyUsSection
+- [x] CtaDevisSection
 
-## Pending before Phase 3
-- [ ] Q6: CRM status button placement (list vs detail) — decide before Phase 7
-- [ ] Q8: Final brand name — placeholder "Signals" in use
-- [ ] Q9: Logo / wordmark from partner
-- [ ] Backend: `GET /api/products/search/?q=` endpoint needed before home page search bar
+### 🔧 Phase 2 — Catalogue (SSR)
+- [ ] `/catalogue` — grille produits paginée + sidebar catégories
+- [ ] `/catalogue/[categorie]` — filtre par catégorie
+- [ ] `/produits/[slug]` — page produit (image, prix, add-to-cart, JSON-LD)
+- [ ] Breadcrumb composant
+- [ ] ProductCard composant réutilisable
+- [ ] Connexion API backend (`GET /api/catalog/products/`, `GET /api/catalog/products/{slug}/`)
 
-## Decisions Made
-- **CSS**: Tailwind CSS (already in base.html via CDN → move to compiled build in Phase 2)
-- **Interactivity on templates**: HTMX (already wired for add-to-cart)
-- **React scope**: cart page + checkout tunnel ONLY (not catalog, not account pages)
-- **CRM**: Separate Django templates under `/crm/` — no React, simple server-rendered forms
-- **Language**: French UI throughout (labels, error messages, dates)
-- **SEO**: Django templates own all crawlable pages — React pages are behind auth or non-indexable
-- **V2 configurator**: Plan slot in component tree, build shell only
+### 🔧 Phase 3 — Auth (NextAuth + JWT)
+- [ ] Configuration NextAuth avec provider Django JWT
+- [ ] `/connexion` — formulaire login
+- [ ] `/inscription` — formulaire register
+- [ ] Route handler `app/api/auth/[...nextauth]/route.ts`
+- [ ] Middleware de protection des routes auth-gated
 
-## Errors Encountered
-_(none yet)_
+### 🔧 Phase 4 — Panier (client-side)
+- [ ] CartContext + useCart hook
+- [ ] CartDrawer (slide-in depuis la droite)
+- [ ] `/panier` — CartPage complète
+- [ ] Connexion API backend (`GET/POST/PATCH/DELETE /api/cart/`)
+- [ ] Badge panier live dans Navbar
 
-## Status
-**Currently in Phase 1 — complete.** Phase 2 (design system) is next.
+### 🔧 Phase 5 — Checkout (client-side)
+- [ ] CheckoutStepper (3 étapes)
+- [ ] AddressStep — formulaire adresse avec validation
+- [ ] SummaryStep — récap commande
+- [ ] StripeRedirectButton — POST `/api/orders/{id}/checkout/`
+- [ ] `/commande/[id]/confirmation` — page confirmation
+
+### 🔧 Phase 6 — Compte (client-side, auth-gated)
+- [ ] `/mon-compte` — profil utilisateur
+- [ ] `/mon-compte/commandes` — liste commandes
+- [ ] `/mon-compte/commandes/[id]` — détail commande
+
+### 🔧 Phase 7 — CRM (client-side, staff-gated)
+- [ ] `/crm` — dashboard (stats, dernières commandes)
+- [ ] `/crm/commandes` — liste filtrée par statut/date/email
+- [ ] `/crm/commandes/[id]` — détail + transitions de statut
+- [ ] `/crm/clients` — liste clients
+- [ ] `/crm/clients/[id]` — profil + historique + adresses
+
+### 🔧 Phase 8 — Blog (SSG + ISR)
+- [ ] Structure MDX dans `content/blog/`
+- [ ] `/blog` — liste des articles
+- [ ] `/blog/[slug]` — article avec metadata SEO
+- [ ] MDXComponents pour le rendu des articles
+
+### 🔧 Phase 9 — QA
+- [ ] Mobile (375px, 390px)
+- [ ] Lighthouse ≥ 80 performance, SEO 100, accessibilité ≥ 90
+- [ ] Cross-browser (Chrome, Safari, Firefox)
+- [ ] E2E : guest checkout → Stripe → confirmation
+- [ ] E2E : utilisateur connecté → commande → portail compte
+- [ ] CRM : transitions de statut complètes
+- [ ] 404 page custom
+
+---
+
+## Décisions actées
+- **Framework** : Next.js App Router
+- **CSS** : Tailwind CSS compilé (pas CDN)
+- **Dark mode** : ThemeProvider + data-theme sur html + localStorage
+- **Auth** : NextAuth.js + simplejwt Django
+- **Blog** : MDX local (pas de CMS)
+- **Hébergement** : Vercel (GitHub → déploiement auto)
+- **Backend** : `../backend-signals` — voir routes dans ce repo
+
+## Erreurs rencontrées
+_(aucune pour l'instant)_
+
+## Statut
+**Phase 1 terminée.** Phase 2 (catalogue) est la prochaine étape.
