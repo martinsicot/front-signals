@@ -1,12 +1,15 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV === "development";
+
 const nextConfig: NextConfig = {
   images: {
-    // Hosts allowed for <Image src>. The API (Django) returns absolute media URLs.
-    // Add the production media host here once known.
     remotePatterns: [
-      { protocol: "http", hostname: "localhost", port: "8000", pathname: "/media/**" },
+      isDev
+        ? { protocol: "http", hostname: "localhost", port: "8000", pathname: "/media/**" }
+        : { protocol: "https", hostname: process.env.MEDIA_HOST ?? "", pathname: "/media/**" },
     ],
+    ...(isDev && { dangerouslyAllowLocalIP: true }),
   },
 };
 
