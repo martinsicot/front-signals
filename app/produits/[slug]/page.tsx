@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
 import { api } from '@/lib/api/server'
 import { notFound } from 'next/navigation'
