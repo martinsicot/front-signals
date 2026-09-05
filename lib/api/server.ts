@@ -34,25 +34,42 @@ export interface ProductListItem {
   id: number
   name: string
   slug: string
+  base_code: string
+  type: string
   category_name: string
-  price: string
   image: string | null
-  dimensions: string
-  material: string
+  min_price: string
+  is_active: boolean
+}
+
+export interface VariantAttribute {
+  id: number
+  attribute_slug: string
+  attribute_name: string
+  value: string
+  display: string
+}
+
+export interface Variant {
+  id: number
+  sku: string
+  price: string
+  weight_kg: string | null
+  is_active: boolean
+  attributes: VariantAttribute[]
 }
 
 export interface ProductDetail {
   id: number
   name: string
   slug: string
+  base_code: string
+  type: string
   category: Category
   description: string
-  price: string
-  weight_kg: string | null
-  dimensions: string
-  material: string
   image: string | null
+  is_active: boolean
   meta_title: string
   meta_description: string
-  created_at: string
+  variants: Variant[]
 }

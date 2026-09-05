@@ -48,14 +48,21 @@ export default function ProductCard({ product }: { product: ProductListItem }) {
         <p style={{
           fontSize: 12, color: 'var(--ink-muted)', lineHeight: 1.5,
           flex: 1, marginBottom: 14,
-        }}>{product.dimensions} · {product.material}</p>
+        }}>{product.type}</p>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: 18, fontWeight: 700, letterSpacing: '-0.02em',
           }}>
-            {parseFloat(product.price).toFixed(2).replace('.', ',')} €{' '}
-            <span style={{ fontSize: 12, fontWeight: 400, color: 'var(--ink-muted)' }}>HT</span>
+            {product.min_price != null && !Number.isNaN(parseFloat(product.min_price)) ? (
+              <>
+                <span style={{ fontSize: 11, fontWeight: 400, color: 'var(--ink-muted)' }}>dès </span>
+                {parseFloat(product.min_price).toFixed(2).replace('.', ',')} €{' '}
+                <span style={{ fontSize: 12, fontWeight: 400, color: 'var(--ink-muted)' }}>HT</span>
+              </>
+            ) : (
+              <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--ink-muted)' }}>Sur devis</span>
+            )}
           </div>
           <span style={{
             width: 32, height: 32,
