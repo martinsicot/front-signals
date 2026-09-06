@@ -16,9 +16,7 @@ export default function ProductsSectionClient({
   const visible =
     active === 'all'
       ? products
-      : products.filter(
-          p => p.category_name === categories.find(c => c.slug === active)?.name,
-        )
+      : products.filter(p => p.categories.some(c => c.slug === active))
 
   const filters = [
     { label: 'Tous', value: 'all' },

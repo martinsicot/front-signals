@@ -230,7 +230,7 @@ export default function ProductConfigurator({ product }: Props) {
         <p style={{
           fontSize: 11, fontWeight: 500, letterSpacing: '0.08em',
           textTransform: 'uppercase', color: 'var(--verde)', marginBottom: 6,
-        }}>{product.category.name}</p>
+        }}>{product.categories[0]?.name ?? ''}</p>
 
         <h1 style={{
           fontFamily: "'Space Grotesk', sans-serif",

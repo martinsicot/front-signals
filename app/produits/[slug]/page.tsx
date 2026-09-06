@@ -36,10 +36,14 @@ export default async function ProductPage({ params }: Props) {
       <nav style={{ marginBottom: 28, fontSize: 13, color: 'var(--ink-muted)' }}>
         <Link href="/catalogue" style={{ color: 'var(--ink-muted)' }}>Catalogue</Link>
         {' › '}
-        <Link href={`/catalogue/${product.category.slug}`} style={{ color: 'var(--ink-muted)' }}>
-          {product.category.name}
-        </Link>
-        {' › '}
+        {product.categories[0] && (
+          <>
+            <Link href={`/catalogue/${product.categories[0].slug}`} style={{ color: 'var(--ink-muted)' }}>
+              {product.categories[0].name}
+            </Link>
+            {' › '}
+          </>
+        )}
         <span style={{ color: 'var(--ink)' }}>{product.name}</span>
       </nav>
 
