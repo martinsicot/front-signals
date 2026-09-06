@@ -1,14 +1,28 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useTheme } from '@/components/ThemeProvider'
 import { useCart } from '@/context/CartContext'
+import SearchOverlay from '@/components/search/SearchOverlay'
 
 export default function Navbar() {
   const { toggle, theme } = useTheme()
   const { totalItems } = useCart()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+
+  // Global ⌘K / Ctrl+K shortcut to open search.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault()
+        setSearchOpen(true)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
 
   return (
     <nav
@@ -78,7 +92,7 @@ export default function Navbar() {
         {/* Actions */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginLeft: 'auto' }}>
           {/* Search */}
-          <button aria-label="Rechercher" style={{
+          <button onClick={() => setSearchOpen(true)} aria-label="Rechercher" style={{
             width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
             borderRadius: 'var(--r)', color: 'var(--ink-muted)', background: 'transparent',
           }}>
@@ -155,6 +169,8 @@ export default function Navbar() {
           .nav-mobile-toggle { display: flex !important; }
         }
       `}</style>
+
+      {searchOpen && <SearchOverlay onClose={() => setSearchOpen(false)} />}
     </nav>
   )
 }

@@ -9,9 +9,16 @@ export const metadata = {
   description: 'Tous nos panneaux de signalisation, mobilier urbain et équipements de sécurité.',
 }
 
-export default async function CataloguePage() {
+export default async function CataloguePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>
+}) {
+  const { q } = await searchParams
+  const query = q?.trim() || undefined
+
   const [productsPage, categories] = await Promise.all([
-    api.products(),
+    api.products({ q: query }),
     api.categories(),
   ])
 
@@ -20,7 +27,9 @@ export default async function CataloguePage() {
       {/* Header */}
       <div style={{ marginBottom: 32 }}>
         <p className="label" style={{ marginBottom: 6 }}>Catalogue</p>
-        <h1 style={{ fontSize: 32, letterSpacing: '-0.02em' }}>Tous les produits</h1>
+        <h1 style={{ fontSize: 32, letterSpacing: '-0.02em' }}>
+          {query ? `Résultats pour « ${query} »` : 'Tous les produits'}
+        </h1>
         <p style={{ fontSize: 14, color: 'var(--ink-muted)', marginTop: 8 }}>
           {productsPage.count} référence{productsPage.count > 1 ? 's' : ''}
         </p>
@@ -35,8 +44,10 @@ export default async function CataloguePage() {
         {/* Grid */}
         <div style={{ flex: 1 }}>
           <InfiniteProductGrid
+            key={query ?? 'all'}
             initialProducts={productsPage.results}
             initialHasMore={productsPage.next !== null}
+            q={query}
           />
         </div>
       </div>

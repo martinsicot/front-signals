@@ -38,14 +38,21 @@ export interface Category {
   meta_description: string
 }
 
+export interface CategoryRef {
+  id: number
+  name: string
+  slug: string
+}
+
 export interface ProductListItem {
   id: number
   name: string
   slug: string
   base_code: string
   type: string
-  category_name: string
+  categories: CategoryRef[]
   image: string | null
+  thumbnail: string | null
   min_price: string
   is_active: boolean
 }
@@ -73,7 +80,7 @@ export interface ProductDetail {
   slug: string
   base_code: string
   type: string
-  category: Category
+  categories: Category[]
   description: string
   image: string | null
   is_active: boolean

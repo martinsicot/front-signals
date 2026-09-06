@@ -40,7 +40,7 @@ export default function ProductCard({ product }: { product: ProductListItem }) {
         <p style={{
           fontSize: 10, fontWeight: 500, letterSpacing: '0.08em',
           textTransform: 'uppercase', color: 'var(--ink-muted)', marginBottom: 4,
-        }}>{product.category_name}</p>
+        }}>{product.categories[0]?.name ?? ''}</p>
         <h3 style={{
           fontFamily: "'Space Grotesk', sans-serif",
           fontSize: 14, fontWeight: 600, marginBottom: 4, letterSpacing: '-0.01em',
