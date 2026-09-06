@@ -1,8 +1,8 @@
 export const revalidate = 3600
 
 import { api } from '@/lib/api/server'
-import ProductCard from '@/components/catalog/ProductCard'
 import CategorySidebar from '@/components/catalog/CategorySidebar'
+import InfiniteProductGrid from '@/components/catalog/InfiniteProductGrid'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CategoriePageComponent({ params }: Props) {
   const { categorie } = await params
-  const [products, categories] = await Promise.all([
+  const [productsPage, categories] = await Promise.all([
     api.products({ category: categorie }),
     api.categories(),
   ])
@@ -45,7 +45,7 @@ export default async function CategoriePageComponent({ params }: Props) {
           </p>
         )}
         <p style={{ fontSize: 14, color: 'var(--ink-muted)', marginTop: 8 }}>
-          {products.length} référence{products.length > 1 ? 's' : ''}
+          {productsPage.count} référence{productsPage.count > 1 ? 's' : ''}
         </p>
       </div>
 
@@ -55,17 +55,11 @@ export default async function CategoriePageComponent({ params }: Props) {
         </div>
 
         <div style={{ flex: 1 }}>
-          {products.length === 0 ? (
-            <p style={{ color: 'var(--ink-muted)', fontSize: 14 }}>Aucun produit dans cette catégorie.</p>
-          ) : (
-            <div style={{
-              display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16,
-            }} className="catalog-grid">
-              {products.map(p => (
-                <ProductCard key={p.id} product={p} />
-              ))}
-            </div>
-          )}
+          <InfiniteProductGrid
+            initialProducts={productsPage.results}
+            initialHasMore={productsPage.next !== null}
+            category={categorie}
+          />
         </div>
       </div>
 

@@ -1,8 +1,8 @@
 export const revalidate = 3600
 
 import { api } from '@/lib/api/server'
-import ProductCard from '@/components/catalog/ProductCard'
 import CategorySidebar from '@/components/catalog/CategorySidebar'
+import InfiniteProductGrid from '@/components/catalog/InfiniteProductGrid'
 
 export const metadata = {
   title: 'Catalogue — Strada',
@@ -10,7 +10,7 @@ export const metadata = {
 }
 
 export default async function CataloguePage() {
-  const [products, categories] = await Promise.all([
+  const [productsPage, categories] = await Promise.all([
     api.products(),
     api.categories(),
   ])
@@ -22,7 +22,7 @@ export default async function CataloguePage() {
         <p className="label" style={{ marginBottom: 6 }}>Catalogue</p>
         <h1 style={{ fontSize: 32, letterSpacing: '-0.02em' }}>Tous les produits</h1>
         <p style={{ fontSize: 14, color: 'var(--ink-muted)', marginTop: 8 }}>
-          {products.length} référence{products.length > 1 ? 's' : ''}
+          {productsPage.count} référence{productsPage.count > 1 ? 's' : ''}
         </p>
       </div>
 
@@ -34,19 +34,10 @@ export default async function CataloguePage() {
 
         {/* Grid */}
         <div style={{ flex: 1 }}>
-          {products.length === 0 ? (
-            <p style={{ color: 'var(--ink-muted)', fontSize: 14 }}>Aucun produit disponible.</p>
-          ) : (
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: 16,
-            }} className="catalog-grid">
-              {products.map(p => (
-                <ProductCard key={p.id} product={p} />
-              ))}
-            </div>
-          )}
+          <InfiniteProductGrid
+            initialProducts={productsPage.results}
+            initialHasMore={productsPage.next !== null}
+          />
         </div>
       </div>
 
