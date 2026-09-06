@@ -1,8 +1,9 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
 import type { ProductDetail, Variant } from '@/lib/api/server'
+import { useCart } from '@/context/CartContext'
 
 interface Props {
   product: ProductDetail
@@ -122,6 +123,13 @@ export default function ProductConfigurator({ product }: Props) {
   )
   const [qty, setQty] = useState(1)
 
+  const { addItem } = useCart()
+  const [added, setAdded] = useState(false)
+  const addedTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  useEffect(() => () => {
+    if (addedTimer.current) clearTimeout(addedTimer.current)
+  }, [])
+
   const matchingVariant = useMemo(() => {
     if (!hasVariants) return null
     return variants.find(v =>
@@ -165,6 +173,29 @@ export default function ProductConfigurator({ product }: Props) {
       }
     }
     setSelected(toSelection(best))
+  }
+
+  function handleAdd() {
+    if (!matchingVariant) return
+    addItem(
+      {
+        productId: product.id,
+        productName: product.name,
+        productSlug: product.slug,
+        productImage: product.image,
+        variantId: matchingVariant.id,
+        sku: matchingVariant.sku,
+        price: matchingVariant.price ?? '',
+        attributes: matchingVariant.attributes.map(a => ({
+          name: a.attribute_name,
+          display: a.display,
+        })),
+      },
+      qty,
+    )
+    setAdded(true)
+    if (addedTimer.current) clearTimeout(addedTimer.current)
+    addedTimer.current = setTimeout(() => setAdded(false), 1500)
   }
 
   return (
@@ -302,17 +333,22 @@ export default function ProductConfigurator({ product }: Props) {
 
           <button
             type="button"
+            onClick={handleAdd}
             disabled={hasVariants && !matchingVariant}
+            aria-live="polite"
             style={{
               flex: 1, padding: '13px 20px',
-              background: hasVariants && !matchingVariant ? 'var(--border)' : 'var(--verde)',
+              background: hasVariants && !matchingVariant
+                ? 'var(--border)'
+                : added ? 'var(--ink)' : 'var(--verde)',
               color: 'white',
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: 15, fontWeight: 600, borderRadius: 'var(--r)',
               border: 'none', cursor: hasVariants && !matchingVariant ? 'not-allowed' : 'pointer',
+              transition: 'background .15s',
             }}
           >
-            Ajouter au panier
+            {added ? 'Ajouté ✓' : 'Ajouter au panier'}
           </button>
         </div>
 

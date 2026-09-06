@@ -3,6 +3,7 @@ import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { ThemeProvider } from '@/components/ThemeProvider'
+import { CartProvider } from '@/context/CartContext'
 
 export const metadata: Metadata = {
   title: 'Strada — Signalétique professionnelle',
@@ -14,9 +15,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr">
       <body>
         <ThemeProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <CartProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </CartProvider>
         </ThemeProvider>
       </body>
     </html>

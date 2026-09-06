@@ -3,10 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useTheme } from '@/components/ThemeProvider'
+import { useCart } from '@/context/CartContext'
 
 export default function Navbar() {
   const { toggle, theme } = useTheme()
-  const [cartCount] = useState(0)
+  const { totalItems } = useCart()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
@@ -88,7 +89,7 @@ export default function Navbar() {
           </button>
 
           {/* Cart */}
-          <button aria-label="Panier" style={{
+          <Link href="/panier" aria-label="Panier" style={{
             position: 'relative', display: 'flex', alignItems: 'center', gap: 6,
             padding: '7px 14px', background: 'var(--surface)',
             border: '1px solid var(--border)', borderRadius: 'var(--r)',
@@ -100,12 +101,14 @@ export default function Navbar() {
               <circle cx={12} cy={14} r={1} />
             </svg>
             Panier
-            <span style={{
-              background: 'var(--verde)', color: 'white', fontSize: 10, fontWeight: 700,
-              minWidth: 18, height: 18, borderRadius: 9,
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '0 4px',
-            }}>{cartCount}</span>
-          </button>
+            {totalItems > 0 && (
+              <span style={{
+                background: 'var(--verde)', color: 'white', fontSize: 10, fontWeight: 700,
+                minWidth: 18, height: 18, borderRadius: 9,
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '0 4px',
+              }}>{totalItems}</span>
+            )}
+          </Link>
 
           {/* Theme toggle */}
           <button onClick={toggle} aria-label="Basculer le thème" style={{
