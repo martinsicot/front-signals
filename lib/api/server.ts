@@ -11,14 +11,22 @@ async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
 
 export const api = {
   categories: () => apiFetch<Category[]>('/categories/'),
-  products: (params?: { category?: string; q?: string }) => {
+  products: (params?: { category?: string; q?: string; page?: number }) => {
     const qs = new URLSearchParams()
     if (params?.category) qs.set('category', params.category)
     if (params?.q) qs.set('q', params.q)
+    if (params?.page) qs.set('page', String(params.page))
     const query = qs.toString() ? `?${qs}` : ''
-    return apiFetch<ProductListItem[]>(`/products/${query}`)
+    return apiFetch<PaginatedResponse<ProductListItem>>(`/products/${query}`)
   },
   product: (slug: string) => apiFetch<ProductDetail>(`/products/${slug}/`),
+}
+
+export interface PaginatedResponse<T> {
+  count: number
+  next: string | null
+  previous: string | null
+  results: T[]
 }
 
 export interface Category {
