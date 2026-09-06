@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import HeroSection from '@/components/home/HeroSection'
 import TrustBar from '@/components/home/TrustBar'
 import CategoriesSection from '@/components/home/CategoriesSection'
