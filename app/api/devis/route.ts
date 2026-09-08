@@ -15,7 +15,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 // Switch to a verified domain address once strada-signal.fr is configured in Resend
 const FROM = 'onboarding@resend.dev'
-const TO = 'devis@strada-signal.fr'
+const TO = 'martin@sicotsoft.com'
 
 function buildHtml(body: DevisPayload): string {
   const itemsHtml = body.items?.length
