@@ -4,8 +4,7 @@ import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { useCart } from '@/context/CartContext'
-
-const DEVIS_EMAIL = 'devis@strada-signal.fr'
+import type { DevisPayload } from '@/app/api/devis/route'
 
 const inputStyle: React.CSSProperties = {
   padding: '10px 12px',
@@ -29,34 +28,43 @@ export default function DevisForm() {
   const { items, totalHT } = useCart()
 
   const [form, setForm] = useState({ nom: '', societe: '', email: '', telephone: '', message: '' })
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'loading' | 'sent' | 'error'>('idle')
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target
     setForm(f => ({ ...f, [name]: value }))
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    setStatus('loading')
 
-    let body = `Nom : ${form.nom}`
-    if (form.societe) body += `\nSociété : ${form.societe}`
-    body += `\nEmail : ${form.email}`
-    if (form.telephone) body += `\nTéléphone : ${form.telephone}`
-
-    if (fromPanier && items.length > 0) {
-      body += '\n\nArticles du panier :\n'
-      body += items.map(i => `  - ${i.productName} (Réf. ${i.sku}) × ${i.quantity}`).join('\n')
-      body += `\n  Total HT : ${formatHT(totalHT)} €`
+    const payload: DevisPayload = {
+      nom: form.nom,
+      societe: form.societe || undefined,
+      email: form.email,
+      telephone: form.telephone || undefined,
+      message: form.message || undefined,
+      ...(fromPanier && items.length > 0 && {
+        items: items.map(i => ({ name: i.productName, sku: i.sku, quantity: i.quantity })),
+        totalHT,
+      }),
     }
 
-    if (form.message) body += `\n\nMessage :\n${form.message}`
-
-    window.location.href = `mailto:${DEVIS_EMAIL}?subject=${encodeURIComponent('Demande de devis — Strada')}&body=${encodeURIComponent(body)}`
-    setSent(true)
+    try {
+      const res = await fetch('/api/devis', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      setStatus('sent')
+    } catch {
+      setStatus('error')
+    }
   }
 
-  if (sent) {
+  if (status === 'sent') {
     return (
       <div style={{ textAlign: 'center', padding: '64px 24px' }}>
         <div style={{
@@ -70,13 +78,9 @@ export default function DevisForm() {
           </svg>
         </div>
         <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 22, marginBottom: 10 }}>
-          Votre client mail s'est ouvert
+          Demande envoyée !
         </h2>
-        <p style={{ fontSize: 14, color: 'var(--ink-muted)', maxWidth: 400, margin: '0 auto 8px' }}>
-          Envoyez l'email pré-rempli depuis votre messagerie. Si rien ne s'est ouvert, écrivez directement à{' '}
-          <a href={`mailto:${DEVIS_EMAIL}`} style={{ color: 'var(--verde)' }}>{DEVIS_EMAIL}</a>.
-        </p>
-        <p style={{ fontSize: 14, color: 'var(--ink-muted)', marginBottom: 32 }}>
+        <p style={{ fontSize: 14, color: 'var(--ink-muted)', maxWidth: 400, margin: '0 auto 32px' }}>
           Nous vous répondons avec un devis détaillé sous 24 heures.
         </p>
         <Link href="/" style={{
@@ -195,15 +199,26 @@ export default function DevisForm() {
           />
         </label>
 
-        <div style={{ marginTop: 8 }}>
-          <button type="submit" style={{
-            padding: '13px 28px',
-            background: 'var(--verde)', color: 'white',
-            border: 'none', borderRadius: 'var(--r)', cursor: 'pointer',
-            fontFamily: "'Space Grotesk', sans-serif", fontSize: 15, fontWeight: 600,
-          }}>
-            Envoyer la demande
+        <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+          <button
+            type="submit"
+            disabled={status === 'loading'}
+            style={{
+              padding: '13px 28px',
+              background: 'var(--verde)', color: 'white',
+              border: 'none', borderRadius: 'var(--r)',
+              cursor: status === 'loading' ? 'default' : 'pointer',
+              opacity: status === 'loading' ? 0.7 : 1,
+              fontFamily: "'Space Grotesk', sans-serif", fontSize: 15, fontWeight: 600,
+            }}
+          >
+            {status === 'loading' ? 'Envoi en cours…' : 'Envoyer la demande'}
           </button>
+          {status === 'error' && (
+            <p style={{ fontSize: 13, color: '#c0392b' }}>
+              Une erreur est survenue. Réessayez ou écrivez à devis@strada-signal.fr.
+            </p>
+          )}
         </div>
       </form>
 
