@@ -2,15 +2,37 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useTheme } from '@/components/ThemeProvider'
 import { useCart } from '@/context/CartContext'
 import SearchOverlay from '@/components/search/SearchOverlay'
 
+const NAV_LINKS: [string, string][] = [
+  ['Signalisation', '/catalogue/signalisation'],
+  ['Mobilier urbain', '/catalogue/mobilier-urbain'],
+  ['Sécurité & balisage', '/catalogue/securite-balisage'],
+  ['Nouveautés', '/catalogue?sort=new'],
+]
+
 export default function Navbar() {
   const { toggle, theme } = useTheme()
   const { totalItems } = useCart()
+  const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+
+  // Close the mobile menu whenever the route changes.
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [pathname])
+
+  // Lock body scroll while the mobile menu is open.
+  useEffect(() => {
+    if (!mobileOpen) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = prev }
+  }, [mobileOpen])
 
   // Global ⌘K / Ctrl+K shortcut to open search.
   useEffect(() => {
@@ -63,12 +85,7 @@ export default function Navbar() {
           display: 'flex', alignItems: 'center', gap: 4,
           flex: 1, listStyle: 'none',
         }} className="nav-links-desktop">
-          {[
-            ['Signalisation', '/catalogue/signalisation'],
-            ['Mobilier urbain', '/catalogue/mobilier-urbain'],
-            ['Sécurité & balisage', '/catalogue/securite-balisage'],
-            ['Nouveautés', '/catalogue?sort=new'],
-          ].map(([label, href]) => (
+          {NAV_LINKS.map(([label, href]) => (
             <li key={href}>
               <Link href={href} style={{
                 padding: '6px 10px', fontSize: 14, fontWeight: 500,
@@ -147,7 +164,8 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            aria-label="Menu"
+            aria-label={mobileOpen ? 'Fermer le menu' : 'Menu'}
+            aria-expanded={mobileOpen}
             onClick={() => setMobileOpen(o => !o)}
             className="nav-mobile-toggle"
             style={{
@@ -156,17 +174,86 @@ export default function Navbar() {
               borderRadius: 'var(--r)', color: 'var(--ink)', marginLeft: 8,
             }}
           >
-            <svg width={18} height={18} viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
-              <path d="M2 5h14M2 9h14M2 13h14" />
-            </svg>
+            {mobileOpen ? (
+              <svg width={18} height={18} viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                <path d="M4 4l10 10M14 4L4 14" />
+              </svg>
+            ) : (
+              <svg width={18} height={18} viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                <path d="M2 5h14M2 9h14M2 13h14" />
+              </svg>
+            )}
           </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div
+          className="nav-mobile-menu"
+          style={{
+            position: 'fixed', inset: 0, top: 'var(--nav-h)',
+            zIndex: 90, display: 'flex', flexDirection: 'column',
+          }}
+        >
+          {/* Backdrop */}
+          <div
+            onClick={() => setMobileOpen(false)}
+            className="nav-mobile-backdrop"
+            aria-hidden="true"
+            style={{
+              position: 'absolute', inset: 0,
+              background: 'rgba(0,0,0,.4)',
+            }}
+          />
+          {/* Drawer */}
+          <div
+            className="nav-mobile-drawer"
+            style={{
+              position: 'relative', background: 'var(--bg)',
+              borderBottom: '1px solid var(--border)',
+              padding: '12px 24px 20px',
+              display: 'flex', flexDirection: 'column', gap: 4,
+            }}
+          >
+            {NAV_LINKS.map(([label, href]) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setMobileOpen(false)}
+                style={{
+                  padding: '12px 8px', fontSize: 16, fontWeight: 500,
+                  color: 'var(--ink)', borderRadius: 'var(--r)',
+                  borderBottom: '1px solid var(--border)',
+                }}
+              >{label}</Link>
+            ))}
+            <Link
+              href="#cta-devis"
+              onClick={() => setMobileOpen(false)}
+              style={{
+                marginTop: 12, padding: '12px 16px', textAlign: 'center',
+                background: 'var(--ink)', color: 'var(--bg)',
+                fontSize: 15, fontWeight: 600, borderRadius: 'var(--r)',
+              }}
+            >
+              Demander un devis
+            </Link>
+          </div>
+        </div>
+      )}
 
       <style>{`
         @media (max-width: 768px) {
           .nav-links-desktop { display: none !important; }
           .nav-mobile-toggle { display: flex !important; }
+        }
+        .nav-mobile-backdrop { animation: navFade .2s ease; }
+        .nav-mobile-drawer { animation: navSlide .22s ease; }
+        @keyframes navFade { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes navSlide {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
 
