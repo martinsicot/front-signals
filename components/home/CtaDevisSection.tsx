@@ -21,7 +21,7 @@ export default function CtaDevisSection() {
           </div>
 
           <div style={{ display: 'flex', gap: 10, flexShrink: 0, flexWrap: 'wrap' }}>
-            <a href="mailto:devis@strada-signal.fr" style={{
+            <a href="/devis" style={{
               display: 'inline-flex', alignItems: 'center', gap: 6,
               padding: '12px 24px', background: 'var(--verde)', color: 'white',
               fontFamily: "'Space Grotesk', sans-serif",

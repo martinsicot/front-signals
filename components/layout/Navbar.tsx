@@ -137,7 +137,7 @@ export default function Navbar() {
           </button>
 
           {/* Devis CTA */}
-          <Link href="#cta-devis" style={{
+          <Link href="/devis" style={{
             padding: '8px 16px', background: 'var(--ink)', color: 'var(--bg)',
             fontSize: 13, fontWeight: 600, borderRadius: 'var(--r)',
             transition: 'opacity .15s',
