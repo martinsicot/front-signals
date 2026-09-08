@@ -190,12 +190,37 @@ export default function CartPage() {
                 color: 'var(--ink)', marginLeft: 10,
               }}>{formatPrice(totalHT)}</strong>
             </div>
-            <Link href="/devis" style={{
+
+            {/* Devis block — only shown for orders above 400 € HT */}
+            {totalHT > 400 && (
+              <div style={{
+                width: '100%', padding: '14px 18px',
+                background: 'var(--surface-alt)', border: '1px solid var(--border)',
+                borderRadius: 10, display: 'flex',
+                alignItems: 'center', justifyContent: 'space-between', gap: 16,
+                flexWrap: 'wrap',
+              }}>
+                <p style={{ fontSize: 13, color: 'var(--ink-muted)', maxWidth: 380 }}>
+                  Votre commande dépasse 400 € — vous pouvez aussi demander un devis personnalisé pour un accompagnement sur-mesure.
+                </p>
+                <Link href="/devis?from=panier" style={{
+                  padding: '10px 20px', flexShrink: 0,
+                  border: '1px solid var(--border-strong)',
+                  background: 'var(--bg)', color: 'var(--ink)',
+                  fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, fontWeight: 600,
+                  borderRadius: 'var(--r)', textDecoration: 'none', whiteSpace: 'nowrap',
+                }}>
+                  Demander un devis
+                </Link>
+              </div>
+            )}
+
+            <Link href="/checkout" style={{
               padding: '14px 28px', background: 'var(--verde)', color: 'white',
               fontFamily: "'Space Grotesk', sans-serif", fontSize: 15, fontWeight: 600,
               borderRadius: 'var(--r)', textDecoration: 'none',
             }}>
-              Demander un devis
+              Procéder au paiement →
             </Link>
           </div>
         </>
