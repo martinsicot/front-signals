@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react'
 
-export default function LegalPage({ title, children }: { title: string; children: ReactNode }) {
+export default function LegalPage({ title, category = 'Informations légales', children }: { title: string; category?: string; children: ReactNode }) {
   return (
     <div style={{ maxWidth: 760, margin: '0 auto', padding: '48px 24px 80px' }}>
-      <p className="label" style={{ marginBottom: 8 }}>Informations légales</p>
+      <p className="label" style={{ marginBottom: 8 }}>{category}</p>
       <h1 style={{ fontSize: 30, letterSpacing: '-0.02em', marginBottom: 40 }}>{title}</h1>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
         {children}
