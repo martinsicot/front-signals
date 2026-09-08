@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic'
 import { api } from '@/lib/api/server'
 import CategorySidebar from '@/components/catalog/CategorySidebar'
 import InfiniteProductGrid from '@/components/catalog/InfiniteProductGrid'
+import CatalogSearchBar from '@/components/search/CatalogSearchBar'
 
 export const metadata = {
   title: 'Catalogue — Strada',
@@ -33,6 +34,7 @@ export default async function CataloguePage({
         <p style={{ fontSize: 14, color: 'var(--ink-muted)', marginTop: 8 }}>
           {productsPage.count} référence{productsPage.count > 1 ? 's' : ''}
         </p>
+        <CatalogSearchBar />
       </div>
 
       <div style={{ display: 'flex', gap: 48, alignItems: 'flex-start' }}>
