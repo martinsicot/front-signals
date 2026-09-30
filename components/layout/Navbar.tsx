@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 import { useTheme } from '@/components/ThemeProvider'
 import { useCart } from '@/context/CartContext'
 import SearchOverlay from '@/components/search/SearchOverlay'
@@ -17,6 +18,7 @@ const NAV_LINKS: [string, string][] = [
 export default function Navbar() {
   const { toggle, theme } = useTheme()
   const { totalItems } = useCart()
+  const { data: session } = useSession()
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -118,6 +120,23 @@ export default function Navbar() {
               <path d="m11 11 3.5 3.5" />
             </svg>
           </button>
+
+          {/* Account */}
+          <Link
+            href={session ? '/mon-compte' : '/connexion'}
+            aria-label={session ? 'Mon compte' : 'Se connecter'}
+            style={{
+              width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
+              borderRadius: 'var(--r)', color: 'var(--ink-muted)', background: 'transparent',
+              border: '1px solid var(--border)',
+            }}
+            title={session ? 'Mon compte' : 'Se connecter'}
+          >
+            <svg width={17} height={17} viewBox="0 0 17 17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx={8.5} cy={6} r={3} />
+              <path d="M2 15c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6" />
+            </svg>
+          </Link>
 
           {/* Cart */}
           <Link href="/panier" aria-label="Panier" style={{
@@ -228,6 +247,22 @@ export default function Navbar() {
                 }}
               >{label}</Link>
             ))}
+            <Link
+              href={session ? '/mon-compte' : '/connexion'}
+              onClick={() => setMobileOpen(false)}
+              style={{
+                marginTop: 4, padding: '12px 8px', fontSize: 16, fontWeight: 500,
+                color: 'var(--ink)', borderRadius: 'var(--r)',
+                borderBottom: '1px solid var(--border)',
+                display: 'flex', alignItems: 'center', gap: 10,
+              }}
+            >
+              <svg width={17} height={17} viewBox="0 0 17 17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx={8.5} cy={6} r={3} />
+                <path d="M2 15c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6" />
+              </svg>
+              {session ? 'Mon compte' : 'Se connecter'}
+            </Link>
             <Link
               href="#cta-devis"
               onClick={() => setMobileOpen(false)}
