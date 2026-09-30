@@ -1,114 +1,87 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import Stripe from 'stripe'
-import { api, type ProductDetail } from '@/lib/api/server'
-import { TVA_RATE, type CheckoutRequest } from '@/lib/checkout'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth/options'
 
-const secretKey = process.env.STRIPE_SECRET_KEY
-const stripe = secretKey ? new Stripe(secretKey) : null
+const BASE = process.env.API_INTERNAL_URL ?? 'http://localhost:8000/api'
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY
+const stripe = stripeSecretKey ? new Stripe(stripeSecretKey) : null
 
-/**
- * Create a Stripe Checkout Session from the client cart.
- *
- * Prices are never trusted from the client: each line is re-priced from the
- * catalogue API by (productSlug, variantId). Amounts are sent to Stripe TTC so
- * the charged total matches the total displayed at checkout.
- */
+interface CartItem {
+  productSlug: string
+  variantId: number
+  quantity: number
+}
+
+interface CheckoutBody {
+  items: CartItem[]
+  shipping_address: Record<string, string>
+  guest_email?: string
+}
+
 export async function POST(req: NextRequest) {
-  if (!stripe) {
-    return NextResponse.json(
-      { error: 'Le paiement n’est pas configuré (STRIPE_SECRET_KEY manquante).' },
-      { status: 503 },
-    )
-  }
-
-  let body: CheckoutRequest
+  let body: CheckoutBody
   try {
-    body = (await req.json()) as CheckoutRequest
+    body = (await req.json()) as CheckoutBody
   } catch {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
   }
 
-  const { items, customer } = body ?? {}
+  const { items, shipping_address, guest_email } = body ?? {}
   if (!Array.isArray(items) || items.length === 0) {
     return NextResponse.json({ error: 'Le panier est vide.' }, { status: 422 })
   }
-  if (!customer?.nom?.trim() || !customer?.adresse?.trim() || !customer?.ville?.trim()) {
-    return NextResponse.json({ error: 'Adresse de livraison incomplète.' }, { status: 422 })
+
+  const session = await getServerSession(authOptions)
+  const extraHeaders: Record<string, string> = session?.accessToken
+    ? { Authorization: `Bearer ${session.accessToken}` }
+    : {}
+
+  const orderPayload: Record<string, unknown> = {
+    items: items.map(i => ({ variant_id: i.variantId, quantity: i.quantity })),
+    shipping_address,
+  }
+  if (!session?.accessToken && guest_email) {
+    orderPayload.guest_email = guest_email
   }
 
-  // Re-price server-side. Fetch each distinct product once.
-  const slugs = [...new Set(items.map(i => i.productSlug))]
-  let products: ProductDetail[]
-  try {
-    products = await Promise.all(slugs.map(slug => api.product(slug)))
-  } catch {
-    return NextResponse.json({ error: 'Produit introuvable.' }, { status: 502 })
-  }
-  const bySlug = new Map(products.map(p => [p.slug, p]))
+  const orderRes = await fetch(`${BASE}/orders/`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...extraHeaders },
+    body: JSON.stringify(orderPayload),
+  })
 
-  const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = []
-  for (const item of items) {
-    const product = bySlug.get(item.productSlug)
-    const variant = product?.variants.find(v => v.id === item.variantId)
-    if (!product || !variant) {
-      return NextResponse.json(
-        { error: `Article indisponible (${item.productSlug}).` },
-        { status: 422 },
-      )
-    }
+  const orderData = (await orderRes.json().catch(() => ({}))) as { id?: number; error?: string; [key: string]: unknown }
 
-    const priceHT = parseFloat(variant.price)
-    if (Number.isNaN(priceHT)) {
-      return NextResponse.json(
-        { error: `Cet article est disponible sur devis uniquement (${product.name}).` },
-        { status: 422 },
-      )
-    }
-    if (!Number.isInteger(item.quantity) || item.quantity < 1) {
-      return NextResponse.json({ error: 'Quantité invalide.' }, { status: 422 })
-    }
-
-    const variantLabel = variant.attributes.map(a => a.display).join(' · ')
-    const unitAmountTTC = Math.round(priceHT * (1 + TVA_RATE) * 100)
-
-    lineItems.push({
-      quantity: item.quantity,
-      price_data: {
-        currency: 'eur',
-        unit_amount: unitAmountTTC,
-        product_data: {
-          name: variantLabel ? `${product.name} — ${variantLabel}` : product.name,
-          metadata: { sku: variant.sku },
-        },
-      },
-    })
+  if (!orderRes.ok || !orderData.id) {
+    const message = orderData.error ?? Object.values(orderData).flat().join(' ') ?? `HTTP ${orderRes.status}`
+    return NextResponse.json({ error: String(message) }, { status: orderRes.status })
   }
 
+  const orderId = orderData.id
   const origin = new URL(req.url).origin
 
-  try {
-    const session = await stripe.checkout.sessions.create({
-      mode: 'payment',
-      line_items: lineItems,
-      success_url: `${origin}/checkout/confirmation?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/panier`,
-      shipping_address_collection: { allowed_countries: ['FR', 'BE', 'LU', 'CH', 'DE'] },
-      metadata: {
-        nom: customer.nom,
-        adresse: customer.adresse,
-        code_postal: customer.codePostal,
-        ville: customer.ville,
-        pays: customer.pays,
-      },
-    })
-    return NextResponse.json({ url: session.url })
-  } catch (err) {
-    console.error('[checkout] stripe error:', err)
-    return NextResponse.json({ error: 'Échec de la création du paiement.' }, { status: 500 })
+  const checkoutRes = await fetch(`${BASE}/orders/${orderId}/checkout/`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...extraHeaders },
+    body: JSON.stringify({
+      return_url: `${origin}/checkout/confirmation?session_id={CHECKOUT_SESSION_ID}`,
+    }),
+  })
+
+  const checkoutData = (await checkoutRes.json().catch(() => ({}))) as { client_secret?: string; error?: string }
+
+  if (!checkoutRes.ok || !checkoutData.client_secret) {
+    return NextResponse.json(
+      { error: checkoutData.error ?? "Échec de la création du paiement." },
+      { status: checkoutRes.status },
+    )
   }
+
+  return NextResponse.json({ clientSecret: checkoutData.client_secret, orderId })
 }
 
-/** Retrieve a completed session so the confirmation page can show the order. */
+/** Retrieve a completed session for the confirmation page. */
 export async function GET(req: NextRequest) {
   if (!stripe) {
     return NextResponse.json({ error: 'Paiement non configuré.' }, { status: 503 })
@@ -120,13 +93,13 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const session = await stripe.checkout.sessions.retrieve(sessionId)
+    const stripeSession = await stripe.checkout.sessions.retrieve(sessionId)
     return NextResponse.json({
-      id: session.id,
-      paymentStatus: session.payment_status,
-      amountTotal: session.amount_total,
-      currency: session.currency,
-      customerEmail: session.customer_details?.email ?? null,
+      id: stripeSession.id,
+      paymentStatus: stripeSession.payment_status,
+      amountTotal: stripeSession.amount_total,
+      currency: stripeSession.currency,
+      customerEmail: stripeSession.customer_details?.email ?? null,
     })
   } catch {
     return NextResponse.json({ error: 'Commande introuvable.' }, { status: 404 })
