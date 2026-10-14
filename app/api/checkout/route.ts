@@ -61,12 +61,17 @@ export async function POST(req: NextRequest) {
   const orderId = orderData.id
   const origin = new URL(req.url).origin
 
+  const checkoutBody: Record<string, string> = {
+    return_url: `${origin}/checkout/confirmation?session_id={CHECKOUT_SESSION_ID}`,
+  }
+  if (!session?.accessToken && guest_email) {
+    checkoutBody.guest_email = guest_email
+  }
+
   const checkoutRes = await fetch(`${BASE}/orders/${orderId}/checkout/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...extraHeaders },
-    body: JSON.stringify({
-      return_url: `${origin}/checkout/confirmation?session_id={CHECKOUT_SESSION_ID}`,
-    }),
+    body: JSON.stringify(checkoutBody),
   })
 
   const checkoutData = (await checkoutRes.json().catch(() => ({}))) as { client_secret?: string; error?: string }
