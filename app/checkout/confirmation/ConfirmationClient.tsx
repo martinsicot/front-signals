@@ -7,17 +7,14 @@ import { useCart } from '@/context/CartContext'
 import { formatEUR } from '@/lib/checkout'
 
 interface OrderSummary {
-  id: string
-  paymentStatus: string
-  amountTotal: number | null
-  currency: string | null
-  customerEmail: string | null
+  id: number
+  status: string
+  guest_email: string
+  lines_summary: { name: string; quantity: number }[]
+  total_ttc: string
 }
 
-/** Short human-friendly order reference derived from the Stripe session id. */
-function orderRef(sessionId: string): string {
-  return sessionId.replace(/^cs_(test_|live_)?/, '').slice(0, 10).toUpperCase()
-}
+const API = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000/api'
 
 export default function ConfirmationClient() {
   const searchParams = useSearchParams()
@@ -41,7 +38,7 @@ export default function ConfirmationClient() {
   useEffect(() => {
     if (!sessionId) return
     let active = true
-    fetch(`/api/checkout?session_id=${encodeURIComponent(sessionId)}`)
+    fetch(`${API}/orders/by-session/${encodeURIComponent(sessionId)}/status/`)
       .then(res => (res.ok ? res.json() : Promise.reject(new Error(String(res.status)))))
       .then((data: OrderSummary) => {
         if (active) {
@@ -76,8 +73,7 @@ export default function ConfirmationClient() {
     )
   }
 
-  const amount =
-    order?.amountTotal != null ? formatEUR(order.amountTotal / 100) : null
+  const amount = order?.total_ttc ? formatEUR(parseFloat(order.total_ttc)) : null
 
   return (
     <div style={{ maxWidth: 560, margin: '0 auto', padding: '56px 24px', textAlign: 'center' }}>
@@ -96,7 +92,7 @@ export default function ConfirmationClient() {
       </h1>
       <p style={{ fontSize: 15, color: 'var(--ink-muted)', marginBottom: 32 }}>
         Un email de confirmation
-        {order?.customerEmail ? ` a été envoyé à ${order.customerEmail}` : ' vous a été envoyé'}.
+        {order?.guest_email ? ` a été envoyé à ${order.guest_email}` : ' vous a été envoyé'}.
         Votre commande est en préparation.
       </p>
 
@@ -104,11 +100,11 @@ export default function ConfirmationClient() {
         textAlign: 'left', background: 'var(--surface-alt)', border: '1px solid var(--border)',
         borderRadius: 12, padding: '20px 22px', marginBottom: 32,
       }}>
-        {sessionId && (
+        {order?.id && (
           <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid var(--border)' }}>
             <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>Numéro de commande</span>
             <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--ink)', fontFamily: "'Space Grotesk', sans-serif" }}>
-              {orderRef(sessionId)}
+              #{String(order.id).padStart(6, '0')}
             </span>
           </div>
         )}
