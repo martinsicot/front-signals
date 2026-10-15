@@ -16,8 +16,8 @@ const features = [
         <rect x={2} y={4} width={16} height={14} rx={2} /><path d="M2 9h16M7 4V2M13 4V2" />
       </svg>
     ),
-    title: '3 jours ouvrés',
-    desc: 'De la validation de commande à l\'expédition : 3 jours. Sans minimum de commande pour les pièces en stock.',
+    title: 'Expédition 3 jours ouvrés',
+    desc: 'Commande validée, colis parti sous 3 jours ouvrés. Sans minimum de commande pour les pièces en stock.',
   },
   {
     icon: (
