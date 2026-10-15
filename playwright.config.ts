@@ -6,7 +6,7 @@ export default defineConfig({
   use: {
     baseURL: 'http://localhost:3000',
     headless: false,
-    slowMo: 300,
+    launchOptions: { slowMo: 300 },
   },
   projects: [
     { name: 'chromium', use: { browserName: 'chromium' } },
