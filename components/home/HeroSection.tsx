@@ -20,7 +20,7 @@ export default function HeroSection() {
             }}>
               <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--verde)' }} />
               <span style={{ fontSize: 12, fontWeight: 500, color: 'var(--verde)' }}>
-                Fabrication européenne · Délai 3 jours
+                Fabrication européenne · Expédition 3 jours ouvrés
               </span>
             </div>
 

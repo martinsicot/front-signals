@@ -115,7 +115,7 @@ export default function ConfirmationClient() {
           </span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0' }}>
-          <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>Livraison estimée</span>
+          <span style={{ fontSize: 13, color: 'var(--ink-muted)' }}>Expédition</span>
           <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--ink)' }}>Sous 3 jours ouvrés</span>
         </div>
       </div>
