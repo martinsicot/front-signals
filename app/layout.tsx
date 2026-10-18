@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
+import ConditionalShell from '@/components/layout/ConditionalShell'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { AuthProvider } from '@/context/AuthContext'
 import { CartProvider } from '@/context/CartContext'
@@ -18,9 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <AuthProvider>
             <CartProvider>
-              <Navbar />
-              <main>{children}</main>
-              <Footer />
+              <ConditionalShell>{children}</ConditionalShell>
             </CartProvider>
           </AuthProvider>
         </ThemeProvider>
