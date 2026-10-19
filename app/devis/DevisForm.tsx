@@ -216,7 +216,7 @@ export default function DevisForm() {
           </button>
           {status === 'error' && (
             <p style={{ fontSize: 13, color: '#c0392b' }}>
-              Une erreur est survenue. Réessayez ou écrivez à devis@strada-signal.fr.
+              Une erreur est survenue. Réessayez ou écrivez à devis@le-panneau.fr.
             </p>
           )}
         </div>

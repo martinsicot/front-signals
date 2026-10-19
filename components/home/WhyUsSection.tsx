@@ -49,7 +49,7 @@ export default function WhyUsSection() {
 
           <div>
             <h2 style={{ fontSize: 32, letterSpacing: '-0.03em', color: 'var(--bg)', marginBottom: 16 }}>
-              Pourquoi choisir Strada ?
+              Pourquoi choisir Le Panneau ?
             </h2>
             <p style={{ fontSize: 15, color: 'rgba(245,243,239,.55)', lineHeight: 1.65, marginBottom: 28 }}>
               Nous ne sommes pas un catalogue en ligne. Nous sommes le lien direct entre un fabricant européen de référence et ceux qui équipent la voie publique.

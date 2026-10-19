@@ -19,7 +19,7 @@ export default function HeaderV3() {
           display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '16px 32px',
         }}>
           {/* Logo */}
-          <Link href="/v3" aria-label="Strada, accueil" style={{
+          <Link href="/v3" aria-label="Le Panneau, accueil" style={{
             display: 'flex', alignItems: 'center', gap: 12,
             textDecoration: 'none', color: '#FFFFFF',
           }}>

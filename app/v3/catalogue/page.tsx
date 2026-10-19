@@ -6,7 +6,7 @@ import { api } from '@/lib/api/server'
 import ProductGridV3 from '@/components/v3/catalog/ProductGridV3'
 
 export const metadata: Metadata = {
-  title: 'Catalogue — Strada',
+  title: 'Catalogue — Le Panneau',
   description: 'Tous nos panneaux de signalisation routière, poteaux et fixations.',
 }
 

@@ -6,7 +6,7 @@ import InfiniteProductGrid from '@/components/catalog/InfiniteProductGrid'
 import CatalogSearchBar from '@/components/search/CatalogSearchBar'
 
 export const metadata = {
-  title: 'Catalogue — Strada',
+  title: 'Catalogue — Le Panneau',
   description: 'Tous nos panneaux de signalisation, mobilier urbain et équipements de sécurité.',
 }
 

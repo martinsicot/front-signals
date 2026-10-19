@@ -13,7 +13,7 @@ export interface DevisPayload {
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-// Switch to a verified domain address once strada-signal.fr is configured in Resend
+// Switch to a verified domain address once le-panneau.fr is configured in Resend
 const FROM = 'onboarding@resend.dev'
 const TO = 'martin@sicotsoft.com'
 

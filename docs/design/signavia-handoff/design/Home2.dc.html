@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Accueil — Signavia (direction B)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;500;600;700;800;900&amp;family=Overpass+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#111315}a:hover{color:#000}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.tile{transition:background .12s ease}
+.tile:hover{background:#F3F3F1}
+.shape:hover{background:#26292D}
+.ul{text-decoration:none}
+.ul:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+</style>
+</helmet>
+<div style="font-family: Overpass, system-ui, sans-serif; color: #111315; background: #FFFFFF; min-height: 100vh">
+
+<!-- En-tête -->
+<header>
+<div style="background: #111315; color: #FFFFFF">
+<div style="max-width: 1360px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px">
+<a href="Home2.dc.html" aria-label="Signavia, accueil" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #FFFFFF">
+<svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="8" width="24" height="24" transform="rotate(45 20 20)" fill="#FFFFFF"></rect><rect x="11.5" y="11.5" width="17" height="17" transform="rotate(45 20 20)" fill="{{accent}}"></rect></svg>
+<span style="font-weight: 900; font-size: 26px; letter-spacing: 2px">SIGNAVIA</span>
+</a>
+<form role="search" style="flex: 1 1 380px; display: flex; align-items: stretch; height: 48px; background: #FFFFFF; border-radius: 2px">
+<label for="q-h2" class="sr-only">Rechercher par code ou mot-clé</label>
+<input id="q-h2" type="search" placeholder="Code ou mot-clé — ex. AB4, B14, poteau 3 m" style="flex: 1; min-width: 0; border: 0; outline: 0; padding: 0 16px; font-family: 'Overpass Mono', monospace; font-size: 15px; background: transparent; color: #111315">
+<button type="submit" style="border: 0; background: {{accent}}; color: #111315; font: inherit; font-weight: 800; font-size: 15px; padding: 0 20px; cursor: pointer; letter-spacing: .5px">CHERCHER</button>
+</form>
+<nav aria-label="Mon espace" style="display: flex; align-items: center; gap: 4px; font-weight: 700; font-size: 15px">
+<a href="#" class="ul" style="color: #FFFFFF; padding: 12px 10px">Espace pro</a>
+<a href="#" class="ul" style="color: #FFFFFF; padding: 12px 10px">Devis <span style="font-family: 'Overpass Mono', monospace; color: {{accent}}">(0)</span></a>
+<a href="#" class="ul" style="color: #FFFFFF; padding: 12px 10px">Panier <span style="font-family: 'Overpass Mono', monospace; color: {{accent}}">(1)</span></a>
+</nav>
+</div>
+</div>
+<nav aria-label="Catalogue" style="border-bottom: 2px solid #111315; background: #FFFFFF">
+<ul style="max-width: 1360px; margin: 0 auto; padding: 0 24px; list-style: none; display: flex; flex-wrap: wrap; font-weight: 700; font-size: 15px">
+<li><a href="Category2.dc.html" class="ul" style="display: flex; gap: 8px; align-items: baseline; padding: 16px 18px 16px 0; border-right: 1px solid #D6D7D9"><span style="font-family: 'Overpass Mono', monospace; font-size: 12px; color: #565B61">01</span>Panneaux de police</a></li>
+<li><a href="#" class="ul" style="display: flex; gap: 8px; align-items: baseline; padding: 16px 18px; border-right: 1px solid #D6D7D9"><span style="font-family: 'Overpass Mono', monospace; font-size: 12px; color: #565B61">02</span>Chantier</a></li>
+<li><a href="#" class="ul" style="display: flex; gap: 8px; align-items: baseline; padding: 16px 18px; border-right: 1px solid #D6D7D9"><span style="font-family: 'Overpass Mono', monospace; font-size: 12px; color: #565B61">03</span>Poteaux &amp; fixations</a></li>
+<li><a href="#" class="ul" style="display: flex; gap: 8px; align-items: baseline; padding: 16px 18px; border-right: 1px solid #D6D7D9"><span style="font-family: 'Overpass Mono', monospace; font-size: 12px; color: #565B61">04</span>Balisage</a></li>
+<li><a href="#" class="ul" style="display: flex; gap: 8px; align-items: baseline; padding: 16px 18px; border-right: 1px solid #D6D7D9"><span style="font-family: 'Overpass Mono', monospace; font-size: 12px; color: #565B61">05</span>Plaques de rue</a></li>
+<li><a href="#" class="ul" style="display: flex; gap: 8px; align-items: baseline; padding: 16px 18px"><span style="font-family: 'Overpass Mono', monospace; font-size: 12px; color: #565B61">06</span>Sur mesure</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<!-- Héros -->
+<section style="max-width: 1360px; margin: 0 auto; padding: 0 24px; display: flex; flex-wrap: wrap; border-bottom: 2px solid #111315; box-sizing: border-box">
+<div style="flex: 999 1 560px; min-width: 0; padding: 72px 48px 64px 0; display: flex; flex-direction: column; gap: 28px; box-sizing: border-box">
+<span style="font-family: 'Overpass Mono', monospace; font-size: 14px; font-weight: 600; letter-spacing: 1px">PANNEAUX · POTEAUX · FIXATIONS</span>
+<h1 style="margin: 0; font-weight: 900; font-size: 84px; line-height: .95; letter-spacing: -2px">Le bon panneau,<br>du premier coup.</h1>
+<p style="margin: 0; font-size: 20px; line-height: 1.5; color: #3A3E43; max-width: 560px">Panneaux homologués configurés au millimètre — gamme, classe, poteau et fixations — et livrés prêts à poser.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="Category2.dc.html" style="display: inline-flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 28px; background: #111315; color: #FFFFFF; font-weight: 800; font-size: 17px; text-decoration: none; border-radius: 2px">Parcourir le catalogue<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13,6 19,12 13,18"></polyline></svg></a>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 28px; border: 2px solid #111315; color: #111315; font-weight: 800; font-size: 17px; text-decoration: none; border-radius: 2px; box-sizing: border-box">Envoyer ma liste pour devis</a>
+</div>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; background: {{accent}}; display: flex; align-items: center; justify-content: center; padding: 40px; box-sizing: border-box; min-height: 480px">
+<svg width="380" height="400" viewBox="0 0 190 200" role="img" aria-label="Plan coté d'un panneau de danger sur poteau">
+<g fill="none" stroke="#111315" stroke-width="1" stroke-dasharray="3 3"><line x1="20" y1="10" x2="20" y2="190"></line><line x1="170" y1="10" x2="170" y2="190"></line></g>
+<rect x="90" y="96" width="10" height="94" fill="#111315"></rect>
+<polygon points="95,14 160,124 30,124" fill="#FFFFFF" stroke="#D52B1E" stroke-width="10" stroke-linejoin="round"></polygon>
+<rect x="90" y="52" width="10" height="40" fill="#111315"></rect><rect x="90" y="100" width="10" height="10" fill="#111315"></rect>
+<g stroke="#111315" stroke-width="1.5"><line x1="30" y1="140" x2="160" y2="140"></line><line x1="30" y1="134" x2="30" y2="146"></line><line x1="160" y1="134" x2="160" y2="146"></line><line x1="176" y1="124" x2="176" y2="190"></line><line x1="171" y1="124" x2="181" y2="124"></line><line x1="171" y1="190" x2="181" y2="190"></line></g>
+<rect x="74" y="133" width="42" height="14" fill="{{accent}}"></rect>
+<text x="95" y="144" text-anchor="middle" font-family="Overpass Mono, monospace" font-size="10" font-weight="600" fill="#111315">1000</text>
+<text x="186" y="160" font-family="Overpass Mono, monospace" font-size="9" font-weight="600" fill="#111315" transform="rotate(-90 186 160)">2300</text>
+</svg>
+</div>
+</section>
+
+<!-- Trouver par forme -->
+<section style="background: #111315; color: #FFFFFF">
+<div style="max-width: 1360px; margin: 0 auto; padding: 56px 24px 64px; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Overpass Mono', monospace; font-size: 14px; color: {{accent}}">01 — TROUVER PAR FORME</span>
+<h2 style="margin: 0; font-weight: 800; font-size: 40px; line-height: 1.05">Vous connaissez la forme ? On s'occupe du reste.</h2>
+</div>
+<a href="#" class="ul" style="color: #FFFFFF; font-weight: 700; font-size: 16px">Guide : choisir la bonne gamme</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); border-top: 1px solid #3A3E43; border-left: 1px solid #3A3E43">
+<sc-for list="{{shapes}}" as="s" hint-placeholder-count="6">
+<a href="Category2.dc.html" class="shape" style="display: flex; flex-direction: column; gap: 18px; padding: 28px 24px; border-right: 1px solid #3A3E43; border-bottom: 1px solid #3A3E43; color: #FFFFFF; text-decoration: none; min-height: 220px; box-sizing: border-box">
+<div style="height: 96px; display: flex; align-items: center">
+<sc-if value="{{s.isTri}}" hint-placeholder-val="{{ false }}"><svg width="92" height="84" viewBox="0 0 100 92" aria-hidden="true"><polygon points="50,6 94,86 6,86" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linejoin="round"></polygon></svg></sc-if>
+<sc-if value="{{s.isInv}}" hint-placeholder-val="{{ false }}"><svg width="92" height="84" viewBox="0 0 100 92" aria-hidden="true"><polygon points="6,6 94,6 50,86" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linejoin="round"></polygon></svg></sc-if>
+<sc-if value="{{s.isCircle}}" hint-placeholder-val="{{ false }}"><svg width="88" height="88" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="none" stroke="#FFFFFF" stroke-width="6"></circle></svg></sc-if>
+<sc-if value="{{s.isOct}}" hint-placeholder-val="{{ false }}"><svg width="88" height="88" viewBox="0 0 100 100" aria-hidden="true"><polygon points="30,4 70,4 96,30 96,70 70,96 30,96 4,70 4,30" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linejoin="round"></polygon></svg></sc-if>
+<sc-if value="{{s.isSquare}}" hint-placeholder-val="{{ false }}"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true"><rect x="5" y="5" width="90" height="90" rx="6" fill="none" stroke="#FFFFFF" stroke-width="6"></rect></svg></sc-if>
+<sc-if value="{{s.isArrow}}" hint-placeholder-val="{{ false }}"><svg width="120" height="60" viewBox="0 0 120 60" aria-hidden="true"><polygon points="4,6 96,6 116,30 96,54 4,54" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linejoin="round"></polygon></svg></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-weight: 800; font-size: 20px">{{s.name}}</span>
+<span style="font-size: 15px; color: #BFC3C8">{{s.desc}}</span>
+</div>
+<span style="margin-top: auto; font-family: 'Overpass Mono', monospace; font-size: 13px; color: {{accent}}">{{s.codes}} →</span>
+</a>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- Catalogue -->
+<section style="max-width: 1360px; margin: 0 auto; padding: 64px 24px 24px; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 28px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Overpass Mono', monospace; font-size: 14px; color: #565B61">02 — CATALOGUE</span>
+<h2 style="margin: 0; font-weight: 800; font-size: 40px; line-height: 1.05">Tout le matériel de signalisation</h2>
+</div>
+<a href="Category2.dc.html" class="ul" style="font-weight: 700; font-size: 16px">Voir l'index complet</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); border-top: 2px solid #111315; border-left: 1px solid #D6D7D9">
+<sc-for list="{{cats}}" as="c" hint-placeholder-count="6">
+<div class="tile" style="position: relative; display: flex; flex-direction: column; gap: 14px; padding: 28px; border-right: 1px solid #D6D7D9; border-bottom: 1px solid #D6D7D9; min-height: 260px; box-sizing: border-box">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px">
+<span style="font-family: 'Overpass Mono', monospace; font-size: 14px; font-weight: 600">{{c.num}}</span>
+<span style="font-family: 'Overpass Mono', monospace; font-size: 13px; color: #565B61">[N] réf.</span>
+</div>
+<a href="{{c.href}}" class="ul" style="font-weight: 800; font-size: 26px; line-height: 1.1">{{c.name}}</a>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 16px; max-width: 62%">
+<sc-for list="{{c.subs}}" as="sub" hint-placeholder-count="3"><li><a href="{{c.href}}" class="ul" style="color: #3A3E43">{{sub}}</a></li></sc-for>
+</ul>
+<div style="position: absolute; right: 24px; bottom: 24px; width: 88px; height: 88px; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{c.isRound}}" hint-placeholder-val="{{ false }}"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="#FFFFFF" stroke="#D52B1E" stroke-width="11"></circle><text x="50" y="62" text-anchor="middle" font-family="Overpass, sans-serif" font-weight="900" font-size="34" fill="#111315">50</text></svg></sc-if>
+<sc-if value="{{c.isTriY}}" hint-placeholder-val="{{ false }}"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,10 92,86 8,86" fill="#F7C600" stroke="#D52B1E" stroke-width="8" stroke-linejoin="round"></polygon><rect x="46" y="36" width="8" height="28" fill="#111315"></rect><rect x="46" y="70" width="8" height="8" fill="#111315"></rect></svg></sc-if>
+<sc-if value="{{c.isPole}}" hint-placeholder-val="{{ false }}"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true"><rect x="36" y="6" width="10" height="86" fill="#9AA1A9"></rect><rect x="56" y="16" width="10" height="76" fill="#9AA1A9"></rect><rect x="28" y="90" width="46" height="6" fill="#111315"></rect></svg></sc-if>
+<sc-if value="{{c.isBollard}}" hint-placeholder-val="{{ false }}"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true"><rect x="38" y="10" width="24" height="84" rx="10" fill="#FFFFFF" stroke="#9AA1A9" stroke-width="2.5"></rect><rect x="39" y="24" width="22" height="12" fill="#D52B1E"></rect></svg></sc-if>
+<sc-if value="{{c.isPlate}}" hint-placeholder-val="{{ false }}"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true"><rect x="4" y="28" width="92" height="44" rx="4" fill="#1F5BB5"></rect><rect x="9" y="33" width="82" height="34" rx="2" fill="none" stroke="#FFFFFF" stroke-width="2"></rect><text x="50" y="56" text-anchor="middle" font-family="Overpass, sans-serif" font-weight="800" font-size="14" fill="#FFFFFF">RUE</text></svg></sc-if>
+<sc-if value="{{c.isCustom}}" hint-placeholder-val="{{ false }}"><svg width="84" height="84" viewBox="0 0 100 100" aria-hidden="true"><rect x="4" y="30" width="92" height="40" rx="6" fill="#FFFFFF" stroke="#111315" stroke-width="4"></rect><text x="50" y="56" text-anchor="middle" font-family="Overpass Mono, monospace" font-weight="600" font-size="13" fill="#111315">ABC…</text></svg></sc-if>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- Kit -->
+<section style="max-width: 1360px; margin: 0 auto; padding: 56px 24px 24px; box-sizing: border-box">
+<div style="border: 2px solid #111315; display: flex; flex-wrap: wrap">
+<div style="flex: 1 1 340px; padding: 36px; display: flex; flex-direction: column; gap: 16px; border-right: 2px solid #111315; box-sizing: border-box">
+<span style="font-family: 'Overpass Mono', monospace; font-size: 14px; color: #565B61">03 — KIT COMPLET</span>
+<h2 style="margin: 0; font-weight: 800; font-size: 34px; line-height: 1.1">Panneau, poteau et fixations, commandés ensemble.</h2>
+<a href="Product2.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; background: {{accent}}; color: #111315; font-weight: 800; font-size: 16px; text-decoration: none; border-radius: 2px">Composer un kit</a>
+</div>
+<ol style="flex: 999 1 560px; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))">
+<li style="padding: 36px 28px; display: flex; flex-direction: column; gap: 10px; border-right: 1px solid #D6D7D9">
+<span style="width: 44px; height: 44px; background: #111315; color: #FFFFFF; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center">1</span>
+<span style="font-weight: 800; font-size: 19px">Le panneau</span>
+<span style="font-size: 15px; line-height: 1.45; color: #3A3E43">Gamme et classe de rétroréflexion selon votre voie.</span>
+</li>
+<li style="padding: 36px 28px; display: flex; flex-direction: column; gap: 10px; border-right: 1px solid #D6D7D9">
+<span style="width: 44px; height: 44px; background: #111315; color: #FFFFFF; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center">2</span>
+<span style="font-weight: 800; font-size: 19px">Le poteau</span>
+<span style="font-size: 15px; line-height: 1.45; color: #3A3E43">Acier galvanisé, hauteur de 2 à 3,5 m.</span>
+</li>
+<li style="padding: 36px 28px; display: flex; flex-direction: column; gap: 10px">
+<span style="width: 44px; height: 44px; background: #111315; color: #FFFFFF; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center">3</span>
+<span style="font-weight: 800; font-size: 19px">Les fixations</span>
+<span style="font-size: 15px; line-height: 1.45; color: #3A3E43">Colliers et visserie ajoutés automatiquement.</span>
+</li>
+</ol>
+</div>
+</section>
+
+<!-- Les plus commandés -->
+<section style="max-width: 1360px; margin: 0 auto; padding: 56px 24px 24px; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 28px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Overpass Mono', monospace; font-size: 14px; color: #565B61">04 — LES PLUS COMMANDÉS</span>
+<h2 style="margin: 0; font-weight: 800; font-size: 40px; line-height: 1.05">Les références incontournables</h2>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); border-top: 2px solid #111315; border-left: 1px solid #D6D7D9">
+<sc-for list="{{best}}" as="p" hint-placeholder-count="5">
+<a href="Product2.dc.html" class="tile" style="display: flex; flex-direction: column; gap: 12px; padding: 20px; border-right: 1px solid #D6D7D9; border-bottom: 1px solid #D6D7D9; text-decoration: none; color: #111315">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<span style="font-family: 'Overpass Mono', monospace; font-size: 22px; font-weight: 600">{{p.code}}</span>
+<span style="font-size: 12px; font-weight: 800; border: 1.5px solid #1F5BB5; color: #1F5BB5; padding: 2px 6px; border-radius: 2px">NF</span>
+</div>
+<div style="height: 160px; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{p.isStop}}" hint-placeholder-val="{{ false }}"><svg width="130" height="130" viewBox="0 0 100 100" aria-hidden="true"><polygon points="30,6 70,6 94,30 94,70 70,94 30,94 6,70 6,30" fill="#D52B1E" stroke="#FFFFFF" stroke-width="3"></polygon><text x="50" y="60" text-anchor="middle" font-family="Overpass, sans-serif" font-weight="900" font-size="26" fill="#FFFFFF">STOP</text></svg></sc-if>
+<sc-if value="{{p.isTri}}" hint-placeholder-val="{{ false }}"><svg width="130" height="130" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,10 92,86 8,86" fill="#FFFFFF" stroke="#D52B1E" stroke-width="8" stroke-linejoin="round"></polygon><rect x="46" y="34" width="8" height="30" fill="#111315"></rect><rect x="46" y="70" width="8" height="8" fill="#111315"></rect></svg></sc-if>
+<sc-if value="{{p.isRound}}" hint-placeholder-val="{{ false }}"><svg width="130" height="130" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="#FFFFFF" stroke="#D52B1E" stroke-width="11"></circle><text x="50" y="62" text-anchor="middle" font-family="Overpass, sans-serif" font-weight="900" font-size="34" fill="#111315">30</text></svg></sc-if>
+<sc-if value="{{p.isNoPark}}" hint-placeholder-val="{{ false }}"><svg width="130" height="130" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="#1F5BB5" stroke="#D52B1E" stroke-width="10"></circle><line x1="23" y1="23" x2="77" y2="77" stroke="#D52B1E" stroke-width="10"></line></svg></sc-if>
+<sc-if value="{{p.isPole}}" hint-placeholder-val="{{ false }}"><svg width="130" height="130" viewBox="0 0 100 100" aria-hidden="true"><rect x="45" y="4" width="10" height="88" fill="#9AA1A9"></rect><rect x="47" y="4" width="2" height="88" fill="#C4C9CE"></rect><rect x="34" y="90" width="32" height="6" fill="#111315"></rect></svg></sc-if>
+</div>
+<span style="font-weight: 700; font-size: 17px; line-height: 1.25">{{p.name}}</span>
+<span style="font-size: 14px; color: #565B61">dès <strong style="font-family: 'Overpass Mono', monospace; color: #111315; font-size: 17px">[PRIX] € HT</strong></span>
+</a>
+</sc-for>
+</div>
+</section>
+
+<!-- Pros -->
+<section style="max-width: 1360px; margin: 0 auto; padding: 56px 24px 72px; box-sizing: border-box">
+<div style="background: {{accent}}; padding: 48px; display: flex; flex-wrap: wrap; gap: 32px 56px; align-items: center">
+<div style="flex: 1 1 420px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'Overpass Mono', monospace; font-size: 14px; font-weight: 600">05 — COLLECTIVITÉS &amp; PROFESSIONNELS</span>
+<h2 style="margin: 0; font-weight: 900; font-size: 40px; line-height: 1.05">Un compte pro pour commander comme vous travaillez.</h2>
+</div>
+<ul style="flex: 1 1 340px; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; font-size: 17px; font-weight: 600">
+<li style="display: flex; gap: 12px; align-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111315" stroke-width="3" stroke-linecap="square" aria-hidden="true"><polyline points="4,12 10,18 20,6"></polyline></svg>Paiement par mandat administratif</li>
+<li style="display: flex; gap: 12px; align-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111315" stroke-width="3" stroke-linecap="square" aria-hidden="true"><polyline points="4,12 10,18 20,6"></polyline></svg>Devis PDF téléchargeable</li>
+<li style="display: flex; gap: 12px; align-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111315" stroke-width="3" stroke-linecap="square" aria-hidden="true"><polyline points="4,12 10,18 20,6"></polyline></svg>Tarifs dégressifs par quantité</li>
+</ul>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 28px; background: #111315; color: #FFFFFF; font-weight: 800; font-size: 17px; text-decoration: none; border-radius: 2px">Ouvrir un compte pro</a>
+</div>
+</section>
+</main>
+
+<!-- Pied de page -->
+<footer style="border-top: 6px solid #111315; background: #FFFFFF">
+<div style="max-width: 1360px; margin: 0 auto; padding: 48px 24px 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-weight: 900; font-size: 24px; letter-spacing: 2px">SIGNAVIA</span>
+<span style="font-size: 15px; line-height: 1.5; color: #3A3E43">Panneaux, poteaux et fixations de signalisation routière.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px"><span style="font-family: 'Overpass Mono', monospace; font-size: 13px; color: #565B61">CATALOGUE</span><a href="Category2.dc.html" class="ul">Panneaux de police</a><a href="#" class="ul">Chantier</a><a href="#" class="ul">Poteaux &amp; fixations</a><a href="#" class="ul">Balisage</a></div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px"><span style="font-family: 'Overpass Mono', monospace; font-size: 13px; color: #565B61">AIDE</span><a href="#" class="ul">Choisir sa gamme</a><a href="#" class="ul">Livraison</a><a href="#" class="ul">FAQ</a><a href="#" class="ul">CGV</a></div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px"><span style="font-family: 'Overpass Mono', monospace; font-size: 13px; color: #565B61">CONTACT</span><span>[TÉLÉPHONE]</span><span>[E-MAIL]</span><a href="#" class="ul">Demander un devis</a></div>
+</div>
+<div style="max-width: 1360px; margin: 0 auto; padding: 16px 24px 32px; font-family: 'Overpass Mono', monospace; font-size: 13px; color: #565B61">© SIGNAVIA · MENTIONS LÉGALES · CONFIDENTIALITÉ</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FFD400","options":["#FFD400","#FF8A1F","#7CD36B","#4FB3FF"]},"$preview":{"width":1440,"height":2500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const shapes = [
+      { name: 'Triangle', desc: 'Danger', codes: 'A1 → A24', k: 'tri' },
+      { name: 'Triangle inversé', desc: 'Cédez le passage', codes: 'AB3a, AB3b', k: 'inv' },
+      { name: 'Rond', desc: 'Interdiction, obligation', codes: 'B1 → B56', k: 'circle' },
+      { name: 'Octogone', desc: 'Stop', codes: 'AB4', k: 'oct' },
+      { name: 'Carré', desc: 'Indication, services', codes: 'C, CE', k: 'square' },
+      { name: 'Flèche', desc: 'Direction', codes: 'D21, D42', k: 'arrow' }
+    ].map((s) => ({ ...s, isTri: s.k === 'tri', isInv: s.k === 'inv', isCircle: s.k === 'circle', isOct: s.k === 'oct', isSquare: s.k === 'square', isArrow: s.k === 'arrow' }));
+    const cats = [
+      { num: '01', name: 'Panneaux de police', subs: ['Danger (A)', 'Interdiction (B)', 'Indication (C)'], k: 'round', href: 'Category2.dc.html' },
+      { num: '02', name: 'Signalisation de chantier', subs: ['Panneaux AK', 'Panneaux KC', 'Barrières'], k: 'triY', href: '#' },
+      { num: '03', name: 'Poteaux & fixations', subs: ['Poteaux 80×40', 'Poteaux Ø 60', 'Colliers & brides'], k: 'pole', href: '#' },
+      { num: '04', name: 'Balisage', subs: ['Balises J11', 'Balises J12', 'Bornes'], k: 'bollard', href: '#' },
+      { num: '05', name: 'Plaques de rue', subs: ['Plaques émaillées', 'Numéros', 'Supports'], k: 'plate', href: '#' },
+      { num: '06', name: 'Sur mesure', subs: ['Texte libre', 'Logo', 'Format spécial'], k: 'custom', href: '#' }
+    ].map((c) => ({ ...c, isRound: c.k === 'round', isTriY: c.k === 'triY', isPole: c.k === 'pole', isBollard: c.k === 'bollard', isPlate: c.k === 'plate', isCustom: c.k === 'custom' }));
+    const best = [
+      { code: 'AB4', name: 'Stop', k: 'stop' },
+      { code: 'A14', name: 'Autres dangers', k: 'tri' },
+      { code: 'B14', name: 'Limitation de vitesse', k: 'round' },
+      { code: 'B6a1', name: 'Stationnement interdit', k: 'noPark' },
+      { code: 'POT-80', name: 'Poteau galvanisé 80×40', k: 'pole' }
+    ].map((p) => ({ ...p, isStop: p.k === 'stop', isTri: p.k === 'tri', isRound: p.k === 'round', isNoPark: p.k === 'noPark', isPole: p.k === 'pole' }));
+    return { accent: this.props.accent ?? '#FFD400', shapes, cats, best };
+  }
+}
+</script>
+</body>
+</html>

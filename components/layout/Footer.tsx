@@ -57,13 +57,13 @@ export default function Footer() {
                   <polygon points="5,0 9,0 14,5 14,9 9,14 5,14 0,9 0,5" />
                 </svg>
               </span>
-              Strada
+              Le Panneau
             </h3>
             <p style={{ fontSize: 13, color: 'var(--ink-muted)', lineHeight: 1.65, marginBottom: 16 }}>
               Signalétique et mobilier urbain conformes, livrés directement du fabricant européen. Pour les collectivités, les professionnels du BTP et les gestionnaires de sites privés.
             </p>
             <div style={{ fontSize: 13, color: 'var(--ink-muted)', display: 'flex', flexDirection: 'column', gap: 4 }}>
-              <span><strong style={{ color: 'var(--ink)' }}>Email :</strong> contact@strada-signal.fr</span>
+              <span><strong style={{ color: 'var(--ink)' }}>Email :</strong> contact@le-panneau.fr</span>
               <span><strong style={{ color: 'var(--ink)' }}>Tél. :</strong> +33 (0)X XX XX XX XX</span>
               <span><strong style={{ color: 'var(--ink)' }}>SIRET :</strong> [XXX XXX XXX XXXXX]</span>
             </div>
@@ -129,7 +129,7 @@ export default function Footer() {
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           fontSize: 12, color: 'var(--ink-muted)', flexWrap: 'wrap', gap: 8,
         }}>
-          <span>© 2025 Strada — Tous droits réservés</span>
+          <span>© 2025 Le Panneau — Tous droits réservés</span>
           <span>Site conçu et développé en France · Paiement sécurisé</span>
         </div>
       </div>

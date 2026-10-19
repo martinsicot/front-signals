@@ -65,7 +65,7 @@ export default function Navbar() {
         padding: '0 24px', display: 'flex', alignItems: 'center',
       }}>
         {/* Logo */}
-        <Link href="/" aria-label="Strada — accueil" style={{
+        <Link href="/" aria-label="Le Panneau — accueil" style={{
           fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700,
           fontSize: 20, letterSpacing: '-0.03em', color: 'var(--ink)',
           marginRight: 40, flexShrink: 0, display: 'flex', alignItems: 'center', gap: 8,
@@ -79,7 +79,7 @@ export default function Navbar() {
               <polygon points="5,0 9,0 14,5 14,9 9,14 5,14 0,9 0,5" />
             </svg>
           </span>
-          Strada
+          Le Panneau
         </Link>
 
         {/* Desktop links */}

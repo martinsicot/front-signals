@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import DevisForm from '@/app/devis/DevisForm'
 
 export const metadata: Metadata = {
-  title: 'Demander un devis — Strada',
+  title: 'Demander un devis — Le Panneau',
   description: 'Envoyez-nous votre besoin et recevez un devis détaillé sous 24 heures.',
 }
 

@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cat = categories.find(c => c.slug === categorie)
   if (!cat) return {}
   return {
-    title: `${cat.name} — Strada`,
+    title: `${cat.name} — Le Panneau`,
     description: cat.meta_description || cat.description,
   }
 }
