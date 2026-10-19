@@ -110,27 +110,29 @@ export default function Navbar() {
 
         {/* Actions */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginLeft: 'auto' }}>
-          {/* Search */}
-          <button onClick={() => setSearchOpen(true)} aria-label="Rechercher" style={{
-            width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
-            borderRadius: 'var(--r)', color: 'var(--ink-muted)', background: 'transparent',
-          }}>
+          {/* Search — desktop only */}
+          <button onClick={() => setSearchOpen(true)} aria-label="Rechercher"
+            className="nav-desktop-only"
+            style={{
+              width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
+              borderRadius: 'var(--r)', color: 'var(--ink-muted)', background: 'transparent',
+            }}>
             <svg width={17} height={17} viewBox="0 0 17 17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
               <circle cx={7} cy={7} r={5.5} />
               <path d="m11 11 3.5 3.5" />
             </svg>
           </button>
 
-          {/* Account */}
+          {/* Account — desktop only */}
           <Link
             href={session ? '/mon-compte' : '/connexion'}
             aria-label={session ? 'Mon compte' : 'Se connecter'}
+            className="nav-desktop-only"
             style={{
               width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
               borderRadius: 'var(--r)', color: 'var(--ink-muted)', background: 'transparent',
               border: '1px solid var(--border)',
             }}
-            title={session ? 'Mon compte' : 'Se connecter'}
           >
             <svg width={17} height={17} viewBox="0 0 17 17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <circle cx={8.5} cy={6} r={3} />
@@ -138,7 +140,7 @@ export default function Navbar() {
             </svg>
           </Link>
 
-          {/* Cart */}
+          {/* Cart — always visible, label hidden on mobile */}
           <Link href="/panier" aria-label="Panier" style={{
             position: 'relative', display: 'flex', alignItems: 'center', gap: 6,
             padding: '7px 14px', background: 'var(--surface)',
@@ -150,7 +152,7 @@ export default function Navbar() {
               <circle cx={7} cy={14} r={1} />
               <circle cx={12} cy={14} r={1} />
             </svg>
-            Panier
+            <span className="nav-cart-label">Panier</span>
             {totalItems > 0 && (
               <span style={{
                 background: 'var(--verde)', color: 'white', fontSize: 10, fontWeight: 700,
@@ -160,28 +162,32 @@ export default function Navbar() {
             )}
           </Link>
 
-          {/* Theme toggle */}
-          <button onClick={toggle} aria-label="Basculer le thème" style={{
-            width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
-            borderRadius: 'var(--r)', color: 'var(--ink-muted)',
-            border: '1px solid var(--border)', background: 'transparent',
-          }}>
+          {/* Theme toggle — desktop only */}
+          <button onClick={toggle} aria-label="Basculer le thème"
+            className="nav-desktop-only"
+            style={{
+              width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
+              borderRadius: 'var(--r)', color: 'var(--ink-muted)',
+              border: '1px solid var(--border)', background: 'transparent',
+            }}>
             <svg width={16} height={16} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
               <circle cx={8} cy={8} r={3} />
               <path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3.1 3.1l1 1M11.9 11.9l1 1M11.9 3.1l-1 1M3.1 11.9l1-1" />
             </svg>
           </button>
 
-          {/* Devis CTA */}
-          <Link href="/devis" style={{
-            padding: '8px 16px', background: 'var(--ink)', color: 'var(--bg)',
-            fontSize: 13, fontWeight: 600, borderRadius: 'var(--r)',
-            transition: 'opacity .15s',
-          }}>
+          {/* Devis CTA — desktop only */}
+          <Link href="/devis"
+            className="nav-desktop-only"
+            style={{
+              padding: '8px 16px', background: 'var(--ink)', color: 'var(--bg)',
+              fontSize: 13, fontWeight: 600, borderRadius: 'var(--r)',
+              transition: 'opacity .15s',
+            }}>
             Demander un devis
           </Link>
 
-          {/* Mobile toggle */}
+          {/* Hamburger — mobile only */}
           <button
             aria-label={mobileOpen ? 'Fermer le menu' : 'Menu'}
             aria-expanded={mobileOpen}
@@ -190,7 +196,7 @@ export default function Navbar() {
             style={{
               display: 'none', width: 36, height: 36,
               alignItems: 'center', justifyContent: 'center',
-              borderRadius: 'var(--r)', color: 'var(--ink)', marginLeft: 8,
+              borderRadius: 'var(--r)', color: 'var(--ink)',
             }}
           >
             {mobileOpen ? (
@@ -235,6 +241,7 @@ export default function Navbar() {
               display: 'flex', flexDirection: 'column', gap: 4,
             }}
           >
+            {/* Nav links */}
             {NAV_LINKS.map(([label, href]) => (
               <Link
                 key={href}
@@ -247,6 +254,8 @@ export default function Navbar() {
                 }}
               >{label}</Link>
             ))}
+
+            {/* Account */}
             <Link
               href={session ? '/mon-compte' : '/connexion'}
               onClick={() => setMobileOpen(false)}
@@ -263,17 +272,55 @@ export default function Navbar() {
               </svg>
               {session ? 'Mon compte' : 'Se connecter'}
             </Link>
-            <Link
-              href="#cta-devis"
-              onClick={() => setMobileOpen(false)}
+
+            {/* Search */}
+            <button
+              onClick={() => { setMobileOpen(false); setSearchOpen(true) }}
               style={{
-                marginTop: 12, padding: '12px 16px', textAlign: 'center',
-                background: 'var(--ink)', color: 'var(--bg)',
-                fontSize: 15, fontWeight: 600, borderRadius: 'var(--r)',
+                padding: '12px 8px', fontSize: 16, fontWeight: 500,
+                color: 'var(--ink)', borderRadius: 'var(--r)',
+                borderBottom: '1px solid var(--border)',
+                display: 'flex', alignItems: 'center', gap: 10,
+                background: 'transparent', textAlign: 'left',
               }}
             >
-              Demander un devis
-            </Link>
+              <svg width={17} height={17} viewBox="0 0 17 17" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                <circle cx={7} cy={7} r={5.5} />
+                <path d="m11 11 3.5 3.5" />
+              </svg>
+              Rechercher
+            </button>
+
+            {/* Bottom row: theme toggle + devis CTA */}
+            <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
+              <button
+                onClick={toggle}
+                aria-label="Basculer le thème"
+                style={{
+                  width: 44, height: 44, flexShrink: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  borderRadius: 'var(--r)', color: 'var(--ink-muted)',
+                  border: '1px solid var(--border)', background: 'transparent',
+                }}
+              >
+                <svg width={16} height={16} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
+                  <circle cx={8} cy={8} r={3} />
+                  <path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3.1 3.1l1 1M11.9 11.9l1 1M11.9 3.1l-1 1M3.1 11.9l1-1" />
+                </svg>
+              </button>
+              <Link
+                href="/devis"
+                onClick={() => setMobileOpen(false)}
+                style={{
+                  flex: 1, padding: '12px 16px', textAlign: 'center',
+                  background: 'var(--ink)', color: 'var(--bg)',
+                  fontSize: 15, fontWeight: 600, borderRadius: 'var(--r)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}
+              >
+                Demander un devis
+              </Link>
+            </div>
           </div>
         </div>
       )}
@@ -281,6 +328,8 @@ export default function Navbar() {
       <style>{`
         @media (max-width: 768px) {
           .nav-links-desktop { display: none !important; }
+          .nav-desktop-only { display: none !important; }
+          .nav-cart-label { display: none !important; }
           .nav-mobile-toggle { display: flex !important; }
         }
         .nav-mobile-backdrop { animation: navFade .2s ease; }
