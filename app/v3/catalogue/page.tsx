@@ -29,7 +29,7 @@ export default async function CatalogueV3Page({
           fontSize: 13, color: '#565B61',
           display: 'flex', alignItems: 'center', gap: 8,
         }}>
-          <Link href="/v3" style={{ color: '#565B61' }}>STRADA</Link>
+          <Link href="/v3" style={{ color: '#565B61' }}>LE PANNEAU</Link>
           <span aria-hidden="true">/</span>
           <span style={{ color: '#111315', fontWeight: 600 }}>CATALOGUE</span>
         </nav>

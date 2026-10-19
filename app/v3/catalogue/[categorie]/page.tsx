@@ -49,7 +49,7 @@ export default async function CategorieV3Page({ params, searchParams }: Props) {
           fontSize: 13, color: '#565B61',
           display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap',
         }}>
-          <Link href="/v3" style={{ color: '#565B61' }}>STRADA</Link>
+          <Link href="/v3" style={{ color: '#565B61' }}>LE PANNEAU</Link>
           <span aria-hidden="true">/</span>
           <Link href="/v3/catalogue" style={{ color: '#565B61' }}>CATALOGUE</Link>
           <span aria-hidden="true">/</span>
