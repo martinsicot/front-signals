@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import LegalPage, { Section, Placeholder } from '@/components/legal/LegalPage'
 
 export const metadata: Metadata = {
-  title: 'Politique de confidentialité — Strada',
+  title: 'Politique de confidentialité — Le Panneau',
 }
 
 export default function ConfidentialitePage() {
@@ -13,7 +13,7 @@ export default function ConfidentialitePage() {
         <p>
           <strong><Placeholder label="RAISON SOCIALE" /></strong><br />
           <Placeholder label="ADRESSE COMPLÈTE" /><br />
-          Email : <a href="mailto:devis@strada-signal.fr" style={{ color: 'var(--verde)' }}>devis@strada-signal.fr</a>
+          Email : <a href="mailto:devis@le-panneau.fr" style={{ color: 'var(--verde)' }}>devis@le-panneau.fr</a>
         </p>
       </Section>
 
@@ -74,7 +74,7 @@ export default function ConfidentialitePage() {
         </ul>
         <p>
           Pour exercer vos droits, contactez-nous à{' '}
-          <a href="mailto:devis@strada-signal.fr" style={{ color: 'var(--verde)' }}>devis@strada-signal.fr</a>.
+          <a href="mailto:devis@le-panneau.fr" style={{ color: 'var(--verde)' }}>devis@le-panneau.fr</a>.
           Nous nous engageons à répondre dans un délai d'un mois.
         </p>
         <p>
@@ -90,8 +90,8 @@ export default function ConfidentialitePage() {
           Ce site n'utilise que des cookies strictement nécessaires à son fonctionnement :
         </p>
         <ul style={{ paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 4 }}>
-          <li><strong>strada-cart</strong> — sauvegarde le contenu du panier (localStorage)</li>
-          <li><strong>strada-theme</strong> — mémorise la préférence de thème clair/sombre (localStorage)</li>
+          <li><strong>lp-cart</strong> — sauvegarde le contenu du panier (localStorage)</li>
+          <li><strong>lp-theme</strong> — mémorise la préférence de thème clair/sombre (localStorage)</li>
         </ul>
         <p>
           Ces données sont stockées localement dans votre navigateur et ne sont pas transmises

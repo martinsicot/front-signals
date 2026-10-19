@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import LegalPage, { Section, Placeholder } from '@/components/legal/LegalPage'
 
 export const metadata: Metadata = {
-  title: 'Conformité & normes — Strada',
-  description: 'Informations sur la conformité réglementaire et les normes applicables aux produits Strada.',
+  title: 'Conformité & normes — Le Panneau',
+  description: 'Informations sur la conformité réglementaire et les normes applicables aux produits Le Panneau.',
 }
 
 export default function ConformitePage() {
@@ -44,7 +44,7 @@ export default function ConformitePage() {
       <Section title="Responsabilité de pose">
         <p>
           La conformité de la signalisation sur la voie publique relève de la responsabilité du
-          gestionnaire de voirie (commune, département, État). Strada fournit des produits conformes
+          gestionnaire de voirie (commune, département, État). Le Panneau fournit des produits conformes
           aux normes en vigueur, mais ne peut se substituer à l'autorisation préalable de pose délivrée
           par l'autorité compétente.
         </p>
@@ -53,8 +53,8 @@ export default function ConformitePage() {
       <Section title="Documents disponibles">
         <p>
           Les déclarations de performance (DoP) et fiches techniques sont disponibles sur demande à{' '}
-          <a href="mailto:contact@strada-signal.fr" style={{ color: 'var(--verde)' }}>
-            contact@strada-signal.fr
+          <a href="mailto:contact@le-panneau.fr" style={{ color: 'var(--verde)' }}>
+            contact@le-panneau.fr
           </a>.
         </p>
       </Section>

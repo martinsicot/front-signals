@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import LegalPage, { Section, Placeholder } from '@/components/legal/LegalPage'
 
 export const metadata: Metadata = {
-  title: 'Conditions Générales de Vente — Strada',
+  title: 'Conditions Générales de Vente — Le Panneau',
 }
 
 export default function CGVPage() {
@@ -17,7 +17,7 @@ export default function CGVPage() {
           <Placeholder label="VILLE" /> sous le numéro <Placeholder label="XXX XXX XXX" />,{' '}
           dont le siège social est situé <Placeholder label="ADRESSE COMPLÈTE" /> (ci-après « la Société »),
           et tout acheteur professionnel ou particulier (ci-après « le Client ») passant commande
-          sur le site strada-signal.fr.
+          sur le site le-panneau.fr.
         </p>
         <p>
           Toute commande implique l'acceptation sans réserve des présentes CGV.
@@ -101,7 +101,7 @@ export default function CGVPage() {
         </p>
         <p>
           Pour exercer ce droit, le Client doit notifier sa décision par email à{' '}
-          <a href="mailto:devis@strada-signal.fr" style={{ color: 'var(--verde)' }}>devis@strada-signal.fr</a>{' '}
+          <a href="mailto:devis@le-panneau.fr" style={{ color: 'var(--verde)' }}>devis@le-panneau.fr</a>{' '}
           avant l'expiration du délai. Les frais de retour sont à la charge du Client.
         </p>
       </Section>

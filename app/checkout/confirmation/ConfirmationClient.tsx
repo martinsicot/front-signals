@@ -60,7 +60,7 @@ export default function ConfirmationClient() {
         </h1>
         <p style={{ fontSize: 14, color: 'var(--ink-muted)', maxWidth: 420, margin: '0 auto 28px' }}>
           Nous n’avons pas pu retrouver votre commande. Si vous avez été débité, contactez-nous à{' '}
-          <a href="mailto:contact@strada-signal.fr" style={{ color: 'var(--verde)' }}>contact@strada-signal.fr</a>.
+          <a href="mailto:contact@le-panneau.fr" style={{ color: 'var(--verde)' }}>contact@le-panneau.fr</a>.
         </p>
         <Link href="/catalogue" style={{
           display: 'inline-block', padding: '12px 24px', background: 'var(--verde)', color: 'white',

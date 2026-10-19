@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import LegalPage, { Section, Placeholder } from '@/components/legal/LegalPage'
 
 export const metadata: Metadata = {
-  title: 'Livraison — Strada',
-  description: 'Informations sur les délais et frais de livraison de vos commandes Strada.',
+  title: 'Livraison — Le Panneau',
+  description: 'Informations sur les délais et frais de livraison de vos commandes Le Panneau.',
 }
 
 export default function LivraisonPage() {
@@ -38,8 +38,8 @@ export default function LivraisonPage() {
         <p>Nous livrons en <strong>France métropolitaine</strong>.</p>
         <p>
           Pour la Corse, les DOM-TOM ou l'étranger, contactez-nous à{' '}
-          <a href="mailto:contact@strada-signal.fr" style={{ color: 'var(--verde)' }}>
-            contact@strada-signal.fr
+          <a href="mailto:contact@le-panneau.fr" style={{ color: 'var(--verde)' }}>
+            contact@le-panneau.fr
           </a>.
         </p>
       </Section>
@@ -47,8 +47,8 @@ export default function LivraisonPage() {
       <Section title="Livraison endommagée ou manquante">
         <p>
           En cas de colis endommagé ou de livraison incomplète, signalez-le sous <strong>48h</strong> à{' '}
-          <a href="mailto:contact@strada-signal.fr" style={{ color: 'var(--verde)' }}>
-            contact@strada-signal.fr
+          <a href="mailto:contact@le-panneau.fr" style={{ color: 'var(--verde)' }}>
+            contact@le-panneau.fr
           </a>{' '}
           avec photos à l'appui.
         </p>

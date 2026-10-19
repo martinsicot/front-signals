@@ -6,7 +6,7 @@ import { AuthProvider } from '@/context/AuthContext'
 import { CartProvider } from '@/context/CartContext'
 
 export const metadata: Metadata = {
-  title: 'Strada — Signalétique professionnelle',
+  title: 'Le Panneau — Signalétique professionnelle',
   description: 'Panneaux de signalisation conformes NF EN 12899-1, mobilier urbain et équipements de sécurité. Livraison en 3 jours.',
 }
 

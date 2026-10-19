@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import LegalPage, { Section, Placeholder } from '@/components/legal/LegalPage'
 
 export const metadata: Metadata = {
-  title: 'Mentions légales — Strada',
+  title: 'Mentions légales — Le Panneau',
 }
 
 const lk = { color: '#1F5BB5' }
@@ -20,7 +20,7 @@ export default function MentionsLegalesV3Page() {
         <p><strong>RCS :</strong> <Placeholder label="VILLE RCS — NUMÉRO" /></p>
         <p>
           <strong>Email :</strong>{' '}
-          <a href="mailto:devis@strada-signal.fr" style={lk}>devis@strada-signal.fr</a>
+          <a href="mailto:devis@le-panneau.fr" style={lk}>devis@le-panneau.fr</a>
         </p>
         <p><strong>Téléphone :</strong> <Placeholder label="+33 X XX XX XX XX" /></p>
       </Section>
@@ -68,7 +68,7 @@ export default function MentionsLegalesV3Page() {
           <strong>Vos droits :</strong> vous disposez d'un droit d'accès, de rectification,
           d'effacement, de limitation et de portabilité de vos données, ainsi que d'un droit
           d'opposition. Pour les exercer, contactez-nous à{' '}
-          <a href="mailto:devis@strada-signal.fr" style={lk}>devis@strada-signal.fr</a>.
+          <a href="mailto:devis@le-panneau.fr" style={lk}>devis@le-panneau.fr</a>.
           Vous pouvez également introduire une réclamation auprès de la{' '}
           <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" style={lk}>CNIL</a>.
         </p>

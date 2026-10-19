@@ -14,7 +14,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     let saved: string | null = null
-    try { saved = localStorage.getItem('strada-theme') } catch {}
+    try { saved = localStorage.getItem('lp-theme') } catch {}
     if (saved === 'dark' || saved === 'light') {
       setTheme(saved)
       document.documentElement.setAttribute('data-theme', saved)
@@ -28,7 +28,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const next = current === 'dark' ? 'light' : 'dark'
     setTheme(next)
     document.documentElement.setAttribute('data-theme', next)
-    try { localStorage.setItem('strada-theme', next) } catch {}
+    try { localStorage.setItem('lp-theme', next) } catch {}
   }
 
   return (

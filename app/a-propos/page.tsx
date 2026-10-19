@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import LegalPage, { Section, Placeholder } from '@/components/legal/LegalPage'
 
 export const metadata: Metadata = {
-  title: 'À propos — Strada',
-  description: 'Découvrez Strada, spécialiste de la signalisation routière pour les particuliers, artisans et collectivités.',
+  title: 'À propos — Le Panneau',
+  description: 'Découvrez Le Panneau, spécialiste de la signalisation routière pour les particuliers, artisans et collectivités.',
 }
 
 export default function AProposPage() {
   return (
-    <LegalPage title="À propos de Strada">
+    <LegalPage title="À propos de Le Panneau">
 
       <Section title="Notre histoire">
         <p>
@@ -18,7 +18,7 @@ export default function AProposPage() {
 
       <Section title="Notre mission">
         <p>
-          Strada simplifie l'accès à la signalisation routière conforme aux normes françaises et européennes,
+          Le Panneau simplifie l'accès à la signalisation routière conforme aux normes françaises et européennes,
           pour les <strong>particuliers</strong>, les <strong>artisans du bâtiment</strong> et les <strong>collectivités</strong>.
         </p>
         <p>
@@ -38,7 +38,7 @@ export default function AProposPage() {
       </Section>
 
       <Section title="Contact">
-        <p><strong>Email :</strong> contact@strada-signal.fr</p>
+        <p><strong>Email :</strong> contact@le-panneau.fr</p>
         <p><strong>Téléphone :</strong> <Placeholder label="NUMÉRO DE TÉLÉPHONE" /></p>
         <p><strong>Adresse :</strong> <Placeholder label="ADRESSE COMPLÈTE" /></p>
       </Section>

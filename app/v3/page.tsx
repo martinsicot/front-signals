@@ -8,7 +8,7 @@ import CatalogSectionsV3 from '@/components/v3/home/CatalogSectionsV3'
 import ProCtaV3 from '@/components/v3/home/ProCtaV3'
 
 export const metadata: Metadata = {
-  title: 'Strada — Panneaux de signalisation routière',
+  title: 'Le Panneau — Panneaux de signalisation routière',
   description: 'Panneaux homologués NF, poteaux et fixations configurés au millimètre — gamme, classe, poteau — livrés prêts à poser.',
 }
 

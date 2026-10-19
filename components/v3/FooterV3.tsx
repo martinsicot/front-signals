@@ -30,7 +30,7 @@ export default function FooterV3() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: 15 }}>
           <span style={{ fontFamily: 'var(--font-overpass-mono), monospace', fontSize: 13, color: '#565B61' }}>CONTACT</span>
           <span>+33 (0)4 XX XX XX XX</span>
-          <span>contact@strada-signal.fr</span>
+          <span>contact@le-panneau.fr</span>
           <Link href="/devis" className="v3-ul">Demander un devis</Link>
         </div>
       </div>

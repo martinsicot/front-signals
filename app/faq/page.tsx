@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import LegalPage, { Section, Placeholder } from '@/components/legal/LegalPage'
 
 export const metadata: Metadata = {
-  title: 'FAQ — Strada',
-  description: 'Réponses aux questions fréquentes sur les commandes, la livraison et les produits Strada.',
+  title: 'FAQ — Le Panneau',
+  description: 'Réponses aux questions fréquentes sur les commandes, la livraison et les produits Le Panneau.',
 }
 
 export default function FAQPage() {
@@ -83,8 +83,8 @@ export default function FAQPage() {
       <Section title="Vous n'avez pas trouvé votre réponse ?">
         <p>
           Contactez-nous à{' '}
-          <a href="mailto:contact@strada-signal.fr" style={{ color: 'var(--verde)' }}>
-            contact@strada-signal.fr
+          <a href="mailto:contact@le-panneau.fr" style={{ color: 'var(--verde)' }}>
+            contact@le-panneau.fr
           </a>
           , nous répondons sous 24h ouvrées.
         </p>

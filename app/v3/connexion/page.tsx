@@ -3,8 +3,8 @@ import type { Metadata } from 'next'
 import LoginForm from '@/app/connexion/LoginForm'
 
 export const metadata: Metadata = {
-  title: 'Connexion — Strada',
-  description: 'Connectez-vous à votre espace client Strada.',
+  title: 'Connexion — Le Panneau',
+  description: 'Connectez-vous à votre espace client Le Panneau.',
 }
 
 export default function ConnexionV3Page() {

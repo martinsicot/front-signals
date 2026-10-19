@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import ConfirmationClient from '@/app/checkout/confirmation/ConfirmationClient'
 
 export const metadata: Metadata = {
-  title: 'Commande confirmée — Strada',
+  title: 'Commande confirmée — Le Panneau',
   description: 'Merci pour votre commande. Retrouvez le récapitulatif et le délai de livraison estimé.',
 }
 

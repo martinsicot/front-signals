@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const product = await api.product(slug)
     return {
-      title: product.meta_title || `${product.name} — Strada`,
+      title: product.meta_title || `${product.name} — Le Panneau`,
       description: product.meta_description || product.description,
     }
   } catch {
