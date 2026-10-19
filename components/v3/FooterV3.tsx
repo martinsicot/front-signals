@@ -8,7 +8,7 @@ export default function FooterV3() {
         display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 32,
       }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <span style={{ fontWeight: 900, fontSize: 24, letterSpacing: 2 }}>STRADA</span>
+          <span style={{ fontWeight: 900, fontSize: 24, letterSpacing: 2 }}>LE PANNEAU</span>
           <span style={{ fontSize: 15, lineHeight: 1.5, color: '#3A3E43' }}>
             Panneaux, poteaux et fixations de signalisation routière.
           </span>
@@ -38,7 +38,7 @@ export default function FooterV3() {
         maxWidth: 1360, margin: '0 auto', padding: '16px 24px 32px',
         fontFamily: 'var(--font-overpass-mono), monospace', fontSize: 13, color: '#565B61',
       }}>
-        © STRADA · MENTIONS LÉGALES · CONFIDENTIALITÉ
+        © LE PANNEAU · MENTIONS LÉGALES · CONFIDENTIALITÉ
       </div>
     </footer>
   )

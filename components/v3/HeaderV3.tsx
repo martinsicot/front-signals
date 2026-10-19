@@ -27,7 +27,7 @@ export default function HeaderV3() {
               <rect x="8" y="8" width="24" height="24" transform="rotate(45 20 20)" fill="#FFFFFF" />
               <rect x="11.5" y="11.5" width="17" height="17" transform="rotate(45 20 20)" fill="#FFD400" />
             </svg>
-            <span style={{ fontWeight: 900, fontSize: 26, letterSpacing: 2 }}>STRADA</span>
+            <span style={{ fontWeight: 900, fontSize: 26, letterSpacing: 2 }}>LE PANNEAU</span>
           </Link>
 
           {/* Search */}
