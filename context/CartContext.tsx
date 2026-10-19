@@ -9,7 +9,7 @@ import {
 } from 'react'
 import type { CartItem } from '@/lib/cart'
 
-const STORAGE_KEY = 'strada-cart'
+const STORAGE_KEY = 'lp-cart'
 
 interface CartContextValue {
   items: CartItem[]
