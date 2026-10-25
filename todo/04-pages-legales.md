@@ -6,27 +6,6 @@ Obligatoires en France pour tout site e-commerce. Les liens existent dans le foo
 ## Tâches
 
 ### CGV — `/cgv`
-<<<<<<< HEAD
-- [ ] Créer `app/cgv/page.tsx`
-- [ ] Contenu : conditions générales de vente (à rédiger avec le client)
-- [ ] Sections typiques : objet, prix, commandes, livraison, retours, garanties, données personnelles, litiges
-- [ ] Mentionner la TVA applicable (20 % sur signalisation routière en France)
-
-### Mentions légales — `/mentions-legales`
-- [ ] Créer `app/mentions-legales/page.tsx`
-- [ ] Contenu : éditeur du site, hébergeur (Vercel), SIRET, responsable de publication, contact
-- [ ] Informations RGPD : données collectées, durée de conservation, droits des utilisateurs
-
-### Politique de confidentialité (bonus)
-- [ ] Créer `app/confidentialite/page.tsx` si nécessaire (RGPD)
-
-## Prérequis
-- Obtenir les informations légales du client : SIRET, adresse siège, RCS, nom du responsable
-
-## Fichiers concernés
-- `app/cgv/page.tsx` — à créer
-- `app/mentions-legales/page.tsx` — à créer
-=======
 - [x] Créer `app/cgv/page.tsx`
 - [x] Sections : objet, prix & TVA (20%), commandes, paiement, livraison, rétractation, garanties, responsabilité, données personnelles, litiges
 - [ ] Remplacer les placeholders : raison sociale, forme juridique, capital, adresse, SIRET, RCS, transporteur, médiateur, date
@@ -62,4 +41,3 @@ Obligatoires en France pour tout site e-commerce. Les liens existent dans le foo
 - `app/cgv/page.tsx` ✓
 - `app/mentions-legales/page.tsx` ✓
 - `app/confidentialite/page.tsx` ✓
->>>>>>> 2e8b866 (feat(legal): add CGV, mentions légales and privacy policy pages with placeholders)

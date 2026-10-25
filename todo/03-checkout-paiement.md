@@ -6,25 +6,25 @@ Le panier est fonctionnel mais il n'y a aucune suite : pas de saisie d'adresse, 
 ## Tâches
 
 ### Tunnel de commande
-- [ ] `app/checkout/page.tsx` — page de checkout (adresse + récap panier)
-- [ ] Formulaire adresse de livraison : nom, adresse, code postal, ville, pays
-- [ ] Récapitulatif des articles avec sous-total HT, TVA, total TTC
-- [ ] Afficher le bloc "Demander un devis" si total HT > 400 € (voir `todo/02-devis.md`)
+- [x] `app/checkout/page.tsx` — page de checkout (adresse + récap panier)
+- [x] Formulaire adresse de livraison : nom, adresse, code postal, ville, pays
+- [x] Récapitulatif des articles avec sous-total HT, TVA, total TTC
+- [x] Afficher le bloc "Demander un devis" si total HT > 400 € (voir `todo/02-devis.md`)
 
 ### Intégration paiement (Stripe recommandé)
-- [ ] Installer `@stripe/stripe-js` et `@stripe/react-stripe-js`
-- [ ] Créer `app/api/checkout/route.ts` — crée une Stripe Checkout Session et retourne l'URL
-- [ ] Rediriger vers Stripe Checkout (hosted) ou intégrer Stripe Elements
-- [ ] Ajouter les variables d'env `STRIPE_SECRET_KEY` et `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
+- [x] Installer `@stripe/stripe-js` et `@stripe/react-stripe-js`
+- [x] Créer `app/api/checkout/route.ts` — crée une Stripe Checkout Session et retourne l'URL
+- [x] Rediriger vers Stripe Checkout (hosted) ou intégrer Stripe Elements (Embedded Checkout)
+- [x] Ajouter les variables d'env `STRIPE_SECRET_KEY` et `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`
 
 ### Confirmation de commande
-- [ ] `app/checkout/confirmation/page.tsx` — page affichée après paiement réussi
-- [ ] Lire le `session_id` retourné par Stripe en query param
-- [ ] Vider le panier après confirmation
-- [ ] Afficher numéro de commande, récap, délai estimé
+- [x] `app/checkout/confirmation/page.tsx` — page affichée après paiement réussi
+- [x] Lire le `session_id` retourné par Stripe en query param
+- [x] Vider le panier après confirmation
+- [x] Afficher numéro de commande, récap, délai estimé
 
 ### Webhooks (optionnel dans un premier temps)
-- [ ] `app/api/webhooks/stripe/route.ts` — écouter les événements Stripe (`payment_intent.succeeded`, etc.)
+- [x] `app/api/webhooks/stripe/route.ts` — écouter les événements Stripe (`payment_intent.succeeded`, etc.)
 
 ## Fichiers concernés
 - `app/checkout/page.tsx` — à créer
