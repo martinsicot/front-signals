@@ -54,6 +54,7 @@ export interface ProductListItem {
   image: string | null
   thumbnail: string | null
   min_price: string
+  min_price_ttc: string
   is_active: boolean
 }
 
@@ -69,6 +70,8 @@ export interface Variant {
   id: number
   sku: string
   price: string
+  price_ht: string
+  price_ttc: string
   weight_kg: string | null
   is_active: boolean
   attributes: VariantAttribute[]

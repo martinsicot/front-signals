@@ -138,7 +138,7 @@ function EmptyState() {
 }
 
 export default function CartPage() {
-  const { items, totalItems, totalHT, clearCart } = useCart()
+  const { items, totalItems, totalHT, totalTTC, clearCart } = useCart()
 
   return (
     <div style={{ maxWidth: 900, margin: '0 auto', padding: '32px 24px' }}>
@@ -183,12 +183,16 @@ export default function CartPage() {
             marginTop: 24, padding: '20px 0', display: 'flex',
             flexDirection: 'column', alignItems: 'flex-end', gap: 16,
           }}>
-            <div style={{ fontSize: 15, color: 'var(--ink-muted)' }}>
-              Total HT{' '}
+            <div style={{ fontSize: 14, color: 'var(--ink-muted)', display: 'flex', justifyContent: 'flex-end', gap: 8, alignItems: 'baseline' }}>
+              <span>Total HT</span>
+              <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 16, fontWeight: 600, color: 'var(--ink)' }}>{formatPrice(totalHT)}</span>
+            </div>
+            <div style={{ fontSize: 15, color: 'var(--ink-muted)', display: 'flex', justifyContent: 'flex-end', gap: 8, alignItems: 'baseline' }}>
+              <span>Total TTC</span>
               <strong style={{
                 fontFamily: "'Space Grotesk', sans-serif", fontSize: 24, fontWeight: 700,
-                color: 'var(--ink)', marginLeft: 10,
-              }}>{formatPrice(totalHT)}</strong>
+                color: 'var(--ink)',
+              }}>{formatPrice(totalTTC)}</strong>
             </div>
 
             {/* Devis block — only shown for orders above 400 € HT */}

@@ -185,7 +185,8 @@ export default function ProductConfigurator({ product }: Props) {
         productImage: product.image,
         variantId: matchingVariant.id,
         sku: matchingVariant.sku,
-        price: matchingVariant.price ?? '',
+        price: matchingVariant.price_ht ?? matchingVariant.price ?? '',
+        price_ttc: matchingVariant.price_ttc ?? '',
         attributes: matchingVariant.attributes.map(a => ({
           name: a.attribute_name,
           display: a.display,
@@ -248,10 +249,15 @@ export default function ProductConfigurator({ product }: Props) {
           fontSize: 34, fontWeight: 700, fontFamily: "'Space Grotesk', sans-serif",
           letterSpacing: '-0.02em', marginBottom: 24, color: 'var(--ink)',
         }}>
-          {matchingVariant && matchingVariant.price != null && !Number.isNaN(parseFloat(matchingVariant.price))
-            ? `${parseFloat(matchingVariant.price).toFixed(2).replace('.', ',')} €`
+          {matchingVariant && matchingVariant.price_ttc != null && !Number.isNaN(parseFloat(matchingVariant.price_ttc))
+            ? `${parseFloat(matchingVariant.price_ttc).toFixed(2).replace('.', ',')} €`
             : 'Sur devis'}
-          <span style={{ fontSize: 14, fontWeight: 400, color: 'var(--ink-muted)', marginLeft: 8 }}>HT / unité</span>
+          <span style={{ fontSize: 14, fontWeight: 400, color: 'var(--ink-muted)', marginLeft: 8 }}>TTC / unité</span>
+          {matchingVariant && !Number.isNaN(parseFloat(matchingVariant.price_ht ?? '')) && (
+            <span style={{ display: 'block', fontSize: 13, fontWeight: 400, color: 'var(--ink-muted)', marginTop: 2 }}>
+              {parseFloat(matchingVariant.price_ht).toFixed(2).replace('.', ',')} € HT
+            </span>
+          )}
         </div>
 
         {/* Options */}

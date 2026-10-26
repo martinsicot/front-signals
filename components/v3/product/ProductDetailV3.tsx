@@ -77,14 +77,17 @@ export default function ProductDetailV3({ product }: Props) {
 
   function handleAdd() {
     if (!matchingVariant) return
-    addItem({ productId: product.id, productName: product.name, productSlug: product.slug, productImage: product.image, variantId: matchingVariant.id, sku: matchingVariant.sku, price: matchingVariant.price ?? '', attributes: matchingVariant.attributes.map(a => ({ name: a.attribute_name, display: a.display })) }, qty)
+    addItem({ productId: product.id, productName: product.name, productSlug: product.slug, productImage: product.image, variantId: matchingVariant.id, sku: matchingVariant.sku, price: matchingVariant.price_ht ?? matchingVariant.price ?? '', price_ttc: matchingVariant.price_ttc ?? '', attributes: matchingVariant.attributes.map(a => ({ name: a.attribute_name, display: a.display })) }, qty)
     setAdded(true)
     if (timerRef.current) clearTimeout(timerRef.current)
     timerRef.current = setTimeout(() => setAdded(false), 1500)
   }
 
-  const price = matchingVariant && !Number.isNaN(parseFloat(matchingVariant.price))
-    ? parseFloat(matchingVariant.price).toFixed(2).replace('.', ',')
+  const priceTTC = matchingVariant && !Number.isNaN(parseFloat(matchingVariant.price_ttc ?? ''))
+    ? parseFloat(matchingVariant.price_ttc).toFixed(2).replace('.', ',')
+    : null
+  const priceHT = matchingVariant && !Number.isNaN(parseFloat(matchingVariant.price_ht ?? ''))
+    ? parseFloat(matchingVariant.price_ht).toFixed(2).replace('.', ',')
     : null
 
   const tierOf = qty >= 25 ? 4 : qty >= 10 ? 3 : qty >= 5 ? 2 : 1
@@ -240,9 +243,14 @@ export default function ProductDetailV3({ product }: Props) {
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                 <span style={{ fontWeight: 900, fontSize: 44, lineHeight: 1, color: '#FFD400' }}>
-                  {price ? `${price} €` : 'Sur devis'} <span style={{ fontSize: 18 }}>HT</span>
+                  {priceTTC ? `${priceTTC} €` : 'Sur devis'} <span style={{ fontSize: 18 }}>TTC</span>
                 </span>
-                {price && <span style={{ fontSize: 14, color: '#BFC3C8' }}>Expédition sous 3 jours ouvrés</span>}
+                {priceHT && (
+                  <span style={{ fontFamily: 'var(--font-overpass-mono), monospace', fontSize: 13, color: '#BFC3C8' }}>
+                    {priceHT} € HT
+                  </span>
+                )}
+                {priceTTC && <span style={{ fontSize: 14, color: '#BFC3C8' }}>Expédition sous 3 jours ouvrés</span>}
               </div>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
@@ -301,7 +309,7 @@ export default function ProductDetailV3({ product }: Props) {
             <thead>
               <tr style={{ fontFamily: 'var(--font-overpass-mono), monospace', fontSize: 13, color: '#565B61', textAlign: 'left' }}>
                 <th scope="col" style={{ padding: '12px 0', fontWeight: 500 }}>QUANTITÉ</th>
-                <th scope="col" style={{ padding: '12px 0', fontWeight: 500, textAlign: 'right' }}>PRIX UNITAIRE HT</th>
+                <th scope="col" style={{ padding: '12px 0', fontWeight: 500, textAlign: 'right' }}>PRIX UNITAIRE TTC</th>
               </tr>
             </thead>
             <tbody style={{ fontFamily: 'var(--font-overpass-mono), monospace', fontSize: 15 }}>
@@ -314,7 +322,7 @@ export default function ProductDetailV3({ product }: Props) {
                 <tr key={row.tier} style={{ borderTop: '1px solid #D6D7D9', background: tierBg(row.tier) }}>
                   <td style={{ padding: '12px 8px' }}>{row.range}</td>
                   <td style={{ padding: '12px 8px', textAlign: 'right' }}>
-                    {row.tier === 4 ? 'Sur devis' : price ? `${price} €` : '—'}
+                    {row.tier === 4 ? 'Sur devis' : priceTTC ? `${priceTTC} €` : '—'}
                   </td>
                 </tr>
               ))}

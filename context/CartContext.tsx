@@ -19,6 +19,7 @@ interface CartContextValue {
   clearCart: () => void
   totalItems: number
   totalHT: number
+  totalTTC: number
 }
 
 const CartContext = createContext<CartContextValue | null>(null)
@@ -33,6 +34,7 @@ function isCartItem(value: unknown): value is CartItem {
     typeof v.price === 'string' &&
     typeof v.quantity === 'number' &&
     Array.isArray(v.attributes)
+    // price_ttc is optional for backward compat with existing localStorage items
   )
 }
 
@@ -112,6 +114,18 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     [items],
   )
 
+  const totalTTC = useMemo(
+    () =>
+      items.reduce((sum, i) => {
+        // Use backend TTC when available; fall back to HT * 1.2 for old localStorage items
+        const ttc = parseFloat(i.price_ttc ?? '')
+        const ht = parseFloat(i.price)
+        const unit = !Number.isNaN(ttc) ? ttc : !Number.isNaN(ht) ? ht * 1.2 : NaN
+        return sum + (Number.isNaN(unit) ? 0 : unit * i.quantity)
+      }, 0),
+    [items],
+  )
+
   const value = useMemo<CartContextValue>(
     () => ({
       items,
@@ -121,8 +135,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       clearCart,
       totalItems,
       totalHT,
+      totalTTC,
     }),
-    [items, totalItems, totalHT],
+    [items, totalItems, totalHT, totalTTC],
   )
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>

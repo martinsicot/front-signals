@@ -5,7 +5,8 @@ export interface CartItem {
   productImage: string | null
   variantId: number
   sku: string
-  price: string // HT, kept as string to match backend
+  price: string // HT
+  price_ttc: string // TTC, captured at add-to-cart time
   attributes: { name: string; display: string }[] // human-readable variant label
   quantity: number
 }
