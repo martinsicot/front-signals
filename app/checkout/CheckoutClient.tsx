@@ -7,7 +7,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import { EmbeddedCheckout, EmbeddedCheckoutProvider } from '@stripe/react-stripe-js'
 import { useCart } from '@/context/CartContext'
 import type { CartItem } from '@/lib/cart'
-import { DEVIS_THRESHOLD, TVA_RATE, formatEUR } from '@/lib/checkout'
+import { DEVIS_THRESHOLD, formatEUR } from '@/lib/checkout'
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? '')
 
@@ -27,9 +27,8 @@ function variantLabel(item: CartItem): string {
   return item.attributes.map(a => a.display).join(' · ')
 }
 
-function OrderSummary({ items, totalHT }: { items: CartItem[]; totalHT: number }) {
-  const tva = totalHT * TVA_RATE
-  const totalTTC = totalHT + tva
+function OrderSummary({ items, totalHT, totalTTC }: { items: CartItem[]; totalHT: number; totalTTC: number }) {
+  const tva = totalTTC - totalHT
 
   return (
     <aside style={{
@@ -65,7 +64,7 @@ function OrderSummary({ items, totalHT }: { items: CartItem[]; totalHT: number }
           <span style={{ color: 'var(--ink)' }}>{formatEUR(totalHT)}</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--ink-muted)' }}>
-          <span>TVA ({Math.round(TVA_RATE * 100)} %)</span>
+          <span>TVA (20 %)</span>
           <span style={{ color: 'var(--ink)' }}>{formatEUR(tva)}</span>
         </div>
         <div style={{
@@ -83,7 +82,7 @@ function OrderSummary({ items, totalHT }: { items: CartItem[]; totalHT: number }
 }
 
 export default function CheckoutClient() {
-  const { items, totalHT } = useCart()
+  const { items, totalHT, totalTTC } = useCart()
   const { data: session, status: sessionStatus } = useSession()
 
   const [form, setForm] = useState({
@@ -292,7 +291,7 @@ export default function CheckoutClient() {
           )}
         </div>
 
-        <OrderSummary items={items} totalHT={totalHT} />
+        <OrderSummary items={items} totalHT={totalHT} totalTTC={totalTTC} />
       </div>
 
       <style>{`

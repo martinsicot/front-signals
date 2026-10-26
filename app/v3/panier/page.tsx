@@ -141,7 +141,7 @@ function EmptyCart() {
 }
 
 export default function PanierV3Page() {
-  const { items, totalItems, totalHT, clearCart } = useCart()
+  const { items, totalItems, totalHT, totalTTC, clearCart } = useCart()
 
   return (
     <section style={{ maxWidth: 1000, margin: '0 auto', padding: '32px 24px 80px', boxSizing: 'border-box' }}>
@@ -218,14 +218,25 @@ export default function PanierV3Page() {
               </div>
             )}
 
-            {/* Total */}
-            <div style={{ fontSize: 16, color: '#565B61' }}>
-              Total HT{' '}
+            {/* Total HT */}
+            <div style={{ fontSize: 14, color: '#565B61', display: 'flex', justifyContent: 'flex-end', alignItems: 'baseline', gap: 12 }}>
+              <span>Total HT</span>
               <span style={{
                 fontFamily: 'var(--font-overpass-mono), monospace',
-                fontWeight: 700, fontSize: 32, color: '#111315', marginLeft: 12,
+                fontWeight: 600, fontSize: 18, color: '#111315',
               }}>
                 {fmt(totalHT)}
+              </span>
+            </div>
+
+            {/* Total TTC */}
+            <div style={{ fontSize: 16, color: '#565B61', display: 'flex', justifyContent: 'flex-end', alignItems: 'baseline', gap: 12 }}>
+              <span>Total TTC</span>
+              <span style={{
+                fontFamily: 'var(--font-overpass-mono), monospace',
+                fontWeight: 700, fontSize: 32, color: '#111315',
+              }}>
+                {fmt(totalTTC)}
               </span>
             </div>
 

@@ -4,8 +4,8 @@ import Image from 'next/image'
 import type { ProductListItem } from '@/lib/api/server'
 
 export default function ProductCard({ product }: { product: ProductListItem }) {
-  const price = product.min_price != null && !Number.isNaN(parseFloat(product.min_price))
-    ? parseFloat(product.min_price).toFixed(2).replace('.', ',')
+  const price = product.min_price_ttc != null && !Number.isNaN(parseFloat(product.min_price_ttc))
+    ? parseFloat(product.min_price_ttc).toFixed(2).replace('.', ',')
     : null
 
   return (
@@ -58,7 +58,7 @@ export default function ProductCard({ product }: { product: ProductListItem }) {
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: 20, fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--ink)',
               }}>{price} €</span>
-              <span style={{ fontSize: 11, color: 'var(--ink-muted)', marginLeft: 3 }}>HT</span>
+              <span style={{ fontSize: 11, color: 'var(--ink-muted)', marginLeft: 3 }}>TTC</span>
             </div>
           ) : (
             <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--ink-muted)' }}>Sur devis</span>
