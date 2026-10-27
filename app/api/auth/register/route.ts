@@ -6,6 +6,7 @@ export interface RegisterPayload {
   last_name: string
   email: string
   password: string
+  password_confirm: string
 }
 
 export async function POST(req: NextRequest) {
@@ -16,7 +17,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
   }
 
-  if (!body.first_name?.trim() || !body.last_name?.trim() || !body.email?.trim() || !body.password) {
+  if (!body.first_name?.trim() || !body.last_name?.trim() || !body.email?.trim() || !body.password || !body.password_confirm) {
     return NextResponse.json({ error: 'Tous les champs sont requis.' }, { status: 422 })
   }
 
@@ -25,5 +26,6 @@ export async function POST(req: NextRequest) {
     last_name: body.last_name,
     email: body.email,
     password: body.password,
+    password_confirm: body.password_confirm,
   })
 }

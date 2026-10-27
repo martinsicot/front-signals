@@ -60,6 +60,7 @@ export default function RegisterForm() {
           last_name: form.lastName,
           email: form.email,
           password: form.password,
+          password_confirm: form.confirm,
         }),
       })
 
