@@ -233,7 +233,7 @@ export default function SearchOverlay({ onClose }: Props) {
                     </span>
                     <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--ink)', flexShrink: 0 }}>
                       {p.min_price != null && !Number.isNaN(parseFloat(p.min_price))
-                        ? `dès ${parseFloat(p.min_price).toFixed(2).replace('.', ',')} €`
+                        ? `dès ${parseFloat(p.min_price).toFixed(2).replace('.', ',')} € HT`
                         : 'Sur devis'}
                     </span>
                   </button>

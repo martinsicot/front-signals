@@ -249,13 +249,13 @@ export default function ProductConfigurator({ product }: Props) {
           fontSize: 34, fontWeight: 700, fontFamily: "'Space Grotesk', sans-serif",
           letterSpacing: '-0.02em', marginBottom: 24, color: 'var(--ink)',
         }}>
-          {matchingVariant && matchingVariant.price_ttc != null && !Number.isNaN(parseFloat(matchingVariant.price_ttc))
-            ? `${parseFloat(matchingVariant.price_ttc).toFixed(2).replace('.', ',')} €`
+          {matchingVariant && !Number.isNaN(parseFloat(matchingVariant.price_ht ?? ''))
+            ? `${parseFloat(matchingVariant.price_ht).toFixed(2).replace('.', ',')} €`
             : 'Sur devis'}
-          <span style={{ fontSize: 14, fontWeight: 400, color: 'var(--ink-muted)', marginLeft: 8 }}>TTC / unité</span>
-          {matchingVariant && !Number.isNaN(parseFloat(matchingVariant.price_ht ?? '')) && (
+          <span style={{ fontSize: 14, fontWeight: 400, color: 'var(--ink-muted)', marginLeft: 8 }}>HT / unité</span>
+          {matchingVariant && matchingVariant.price_ttc != null && !Number.isNaN(parseFloat(matchingVariant.price_ttc)) && (
             <span style={{ display: 'block', fontSize: 13, fontWeight: 400, color: 'var(--ink-muted)', marginTop: 2 }}>
-              {parseFloat(matchingVariant.price_ht).toFixed(2).replace('.', ',')} € HT
+              {parseFloat(matchingVariant.price_ttc).toFixed(2).replace('.', ',')} € TTC
             </span>
           )}
         </div>
