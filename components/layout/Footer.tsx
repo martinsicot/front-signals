@@ -3,9 +3,9 @@
 import Link from 'next/link'
 
 const catalogLinks = [
-  ['Panneaux de signalisation', '/catalogue/signalisation'],
-  ['Mobilier urbain', '/catalogue/mobilier-urbain'],
-  ['Sécurité & balisage', '/catalogue/securite-balisage'],
+  ['Panneaux de signalisation', '/catalogue'],
+  ['Mobilier urbain', '/catalogue'],
+  ['Sécurité & balisage', '/catalogue'],
   ['Nouveautés', '/catalogue?sort=new'],
   ['Promotions', '/catalogue?sort=promo'],
 ]

@@ -9,9 +9,9 @@ import { useCart } from '@/context/CartContext'
 import SearchOverlay from '@/components/search/SearchOverlay'
 
 const NAV_LINKS: [string, string][] = [
-  ['Signalisation', '/catalogue/signalisation'],
-  ['Mobilier urbain', '/catalogue/mobilier-urbain'],
-  ['Sécurité & balisage', '/catalogue/securite-balisage'],
+  ['Signalisation', '/catalogue'],
+  ['Mobilier urbain', '/catalogue'],
+  ['Sécurité & balisage', '/catalogue'],
   ['Nouveautés', '/catalogue?sort=new'],
 ]
 
