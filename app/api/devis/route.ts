@@ -1,5 +1,8 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { Resend } from 'resend'
+import { getToken } from 'next-auth/jwt'
+
+const BASE = process.env.API_INTERNAL_URL ?? 'http://localhost:8000/api'
 
 export interface DevisPayload {
   nom: string
@@ -57,6 +60,30 @@ export async function POST(req: NextRequest) {
   if (error) {
     console.error('[devis] resend error:', error)
     return NextResponse.json({ error: 'Failed to send email' }, { status: 500 })
+  }
+
+  // Persist en DB best-effort (ne bloque pas si Django indisponible)
+  try {
+    const token = await getToken({ req })
+    const quotePayload: Record<string, unknown> = {
+      items: body.items ?? [],
+      message: body.message ?? '',
+      guest_email: token?.accessToken ? '' : body.email,
+      guest_info: token?.accessToken ? {} : {
+        nom: body.nom,
+        societe: body.societe ?? '',
+        telephone: body.telephone ?? '',
+      },
+    }
+    const quoteHeaders: Record<string, string> = { 'Content-Type': 'application/json' }
+    if (token?.accessToken) quoteHeaders['Authorization'] = `Bearer ${token.accessToken}`
+    await fetch(`${BASE}/account/quotes/`, {
+      method: 'POST',
+      headers: quoteHeaders,
+      body: JSON.stringify(quotePayload),
+    })
+  } catch {
+    // best-effort
   }
 
   return NextResponse.json({ ok: true })
