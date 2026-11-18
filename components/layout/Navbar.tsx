@@ -88,7 +88,7 @@ export default function Navbar() {
           flex: 1, listStyle: 'none',
         }} className="nav-links-desktop">
           {NAV_LINKS.map(([label, href]) => (
-            <li key={href}>
+            <li key={label}>
               <Link href={href} style={{
                 padding: '6px 10px', fontSize: 14, fontWeight: 500,
                 color: 'var(--ink-muted)', borderRadius: 4,
@@ -244,7 +244,7 @@ export default function Navbar() {
             {/* Nav links */}
             {NAV_LINKS.map(([label, href]) => (
               <Link
-                key={href}
+                key={label}
                 href={href}
                 onClick={() => setMobileOpen(false)}
                 style={{
