@@ -9,82 +9,119 @@ export default function MentionsLegalesPage() {
   return (
     <LegalPage title="Mentions légales">
 
-      <Section title="Éditeur du site">
-        <p><strong>Raison sociale :</strong> <Placeholder label="RAISON SOCIALE" /></p>
-        <p><strong>Forme juridique :</strong> <Placeholder label="SAS / SARL / EURL" /></p>
-        <p><strong>Capital social :</strong> <Placeholder label="MONTANT" /> €</p>
-        <p><strong>Siège social :</strong> <Placeholder label="ADRESSE COMPLÈTE" /></p>
-        <p><strong>SIRET :</strong> <Placeholder label="XXX XXX XXX XXXXX" /></p>
-        <p><strong>RCS :</strong> <Placeholder label="VILLE RCS — NUMÉRO" /></p>
+      <Section title="1. Éditeur du site">
+        <p><strong>Dénomination sociale :</strong> <Placeholder label="NOM_SOCIETE" /></p>
+        <p><strong>Forme juridique :</strong> <Placeholder label="FORME_JURIDIQUE" /></p>
+        <p><strong>Capital social :</strong> <Placeholder label="MONTANT_CAPITAL" /> €</p>
+        <p><strong>Siège social :</strong> <Placeholder label="ADRESSE_SIEGE" /></p>
+        <p><strong>SIRET :</strong> <Placeholder label="SIRET" /></p>
+        <p><strong>N° TVA intracommunautaire :</strong> <Placeholder label="NUMERO_TVA_INTRA" /></p>
+        <p><strong>Directeur de la publication :</strong> <Placeholder label="NOM_DIRECTEUR_PUBLICATION" /></p>
         <p>
           <strong>Email :</strong>{' '}
-          <a href="mailto:devis@le-panneau.fr" style={{ color: 'var(--verde)' }}>
-            devis@le-panneau.fr
+          <a href={`mailto:`} style={{ color: 'var(--verde)' }}><Placeholder label="EMAIL_CONTACT" /></a>
+        </p>
+        <p><strong>Téléphone :</strong> <Placeholder label="TELEPHONE" /></p>
+      </Section>
+
+      <Section title="2. Hébergement">
+        <p>
+          Le site <Placeholder label="URL_SITE" /> est hébergé par <strong>Vercel Inc.</strong>,
+          440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.
+          Site :{' '}
+          <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--verde)' }}>
+            vercel.com
           </a>
         </p>
-        <p><strong>Téléphone :</strong> <Placeholder label="+33 X XX XX XX XX" /></p>
-      </Section>
-
-      <Section title="Responsable de publication">
-        <p><Placeholder label="NOM PRÉNOM" />, <Placeholder label="TITRE / FONCTION" /></p>
-      </Section>
-
-      <Section title="Hébergement">
         <p>
-          Ce site est hébergé par <strong>Vercel Inc.</strong>,
-          440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.
-        </p>
-        <p>
-          Site : <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--verde)' }}>vercel.com</a>
+          Le serveur API est hébergé par <strong>Hetzner Online GmbH</strong>,
+          Industriestr. 25, 91710 Gunzenhausen, Allemagne.
+          Site :{' '}
+          <a href="https://www.hetzner.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--verde)' }}>
+            www.hetzner.com
+          </a>
         </p>
       </Section>
 
-      <Section title="Propriété intellectuelle">
+      <Section title="3. Propriété intellectuelle">
         <p>
-          L'ensemble du contenu de ce site (textes, images, logos, visuels produits) est la propriété
-          exclusive de <Placeholder label="RAISON SOCIALE" /> ou de ses fournisseurs et est protégé
-          par le droit français et international de la propriété intellectuelle.
-          Toute reproduction, même partielle, est interdite sans autorisation préalable écrite.
+          L'ensemble du contenu de ce site (textes, images, logos, structure, code) est la propriété exclusive
+          de <Placeholder label="NOM_SOCIETE" /> ou de ses fournisseurs et est protégé par le droit français
+          et international de la propriété intellectuelle. Toute reproduction, même partielle, est interdite
+          sans autorisation préalable écrite.
+        </p>
+        <p>
+          Les visuels et fichiers graphiques fournis par les clients pour la personnalisation des produits
+          restent la propriété exclusive de ces derniers. Le Panneau ne dispose d'aucun droit sur ces contenus
+          au-delà de la fabrication de la commande.
         </p>
       </Section>
 
-      <Section title="Données personnelles (RGPD)">
+      <Section title="4. Paiement en ligne">
         <p>
-          Conformément au Règlement Général sur la Protection des Données (RGPD — UE 2016/679)
-          et à la loi Informatique et Libertés du 6 janvier 1978 modifiée,{' '}
-          <Placeholder label="RAISON SOCIALE" /> est responsable du traitement des données
-          personnelles collectées sur ce site.
+          Les paiements sont traités par <strong>Stripe Payments Europe, Ltd.</strong> (1 Grand Canal Street Lower,
+          Grand Canal Dock, Dublin, D02 H210, Irlande), certifiée PCI-DSS niveau 1. Les coordonnées bancaires
+          ne sont pas stockées sur les serveurs du Panneau.
         </p>
-        <p><strong>Données collectées :</strong></p>
-        <ul style={{ paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 4 }}>
-          <li>Données de contact (nom, email, téléphone) — lors d'une demande de devis</li>
-          <li>Données de commande (adresse, articles commandés) — lors d'un achat</li>
-          <li>Données de navigation (cookies techniques) — pour le bon fonctionnement du site</li>
-        </ul>
-        <p><strong>Finalité :</strong> traitement des commandes et devis, relation commerciale, amélioration du service.</p>
-        <p><strong>Durée de conservation :</strong> 3 ans à compter du dernier contact pour les données commerciales, 10 ans pour les données de facturation (obligation légale).</p>
-        <p><strong>Destinataires :</strong> les données ne sont pas cédées à des tiers à des fins commerciales. Elles peuvent être transmises à nos prestataires techniques (Vercel, Stripe, Resend) dans le cadre strict de l'exécution des services.</p>
         <p>
-          <strong>Vos droits :</strong> vous disposez d'un droit d'accès, de rectification,
-          d'effacement, de limitation et de portabilité de vos données, ainsi que d'un droit
-          d'opposition. Pour les exercer, contactez-nous à{' '}
-          <a href="mailto:devis@le-panneau.fr" style={{ color: 'var(--verde)' }}>devis@le-panneau.fr</a>.
-          Vous pouvez également introduire une réclamation auprès de la{' '}
+          Pour plus d'informations sur les pratiques de Stripe :{' '}
+          <a href="https://stripe.com/fr/privacy" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--verde)' }}>
+            stripe.com/fr/privacy
+          </a>.
+        </p>
+      </Section>
+
+      <Section title="5. Données personnelles et cookies">
+        <p>
+          Conformément au RGPD (UE 2016/679) et à la loi Informatique et Libertés,{' '}
+          <Placeholder label="NOM_SOCIETE" /> est responsable du traitement des données personnelles
+          collectées sur ce site.
+        </p>
+        <p>
+          Vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, de portabilité
+          et d'opposition. Pour les exercer : <Placeholder label="EMAIL_RGPD" />.
+          Réclamation possible auprès de la{' '}
           <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--verde)' }}>CNIL</a>.
         </p>
-      </Section>
-
-      <Section title="Cookies">
         <p>
-          Ce site utilise uniquement des cookies techniques nécessaires à son fonctionnement
-          (panier, préférence de thème). Aucun cookie publicitaire ou de tracking tiers n'est déposé.
+          Pour le détail des traitements, consulter notre{' '}
+          <a href="/confidentialite" style={{ color: 'var(--verde)' }}>Politique de confidentialité</a>.
+        </p>
+        <p>
+          Ce site utilise uniquement des cookies techniques strictement nécessaires (session, panier, CSRF).
+          Aucun cookie publicitaire ou de tracking n'est déposé sans consentement.
         </p>
       </Section>
 
-      <Section title="Liens hypertextes">
+      <Section title="6. Liens hypertextes">
         <p>
-          Ce site peut contenir des liens vers des sites tiers. La Société n'exerce aucun contrôle
-          sur ces sites et décline toute responsabilité quant à leur contenu.
+          Ce site peut contenir des liens vers des sites tiers. Le Panneau n'exerce aucun contrôle sur ces
+          sites et décline toute responsabilité quant à leur contenu ou leurs pratiques.
+        </p>
+        <p>
+          Toute création de lien vers le site est soumise à accord préalable écrit de l'éditeur.
+        </p>
+      </Section>
+
+      <Section title="7. Médiation de la consommation">
+        <p>
+          Conformément aux articles L. 616-1 et R. 616-1 du Code de la consommation, le consommateur peut
+          recourir gratuitement au service de médiation suivant :{' '}
+          <strong><Placeholder label="NOM_MEDIATEUR" /></strong> —{' '}
+          <Placeholder label="URL_MEDIATEUR" />.
+        </p>
+        <p>
+          Plateforme européenne de règlement en ligne des litiges :{' '}
+          <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--verde)' }}>
+            ec.europa.eu/consumers/odr
+          </a>.
+        </p>
+      </Section>
+
+      <Section title="8. Droit applicable">
+        <p>
+          Les présentes mentions légales sont soumises au droit français. Tout litige relève de la
+          compétence des tribunaux français.
         </p>
       </Section>
 

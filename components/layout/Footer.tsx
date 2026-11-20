@@ -23,7 +23,9 @@ const accountLinks = [
   ['Mes commandes', '/mon-compte/commandes'],
   ['Mes devis', '/mon-compte/devis'],
   ['CGV', '/cgv'],
+  ['CGU', '/cgu'],
   ['Mentions légales', '/mentions-legales'],
+  ['Confidentialité', '/confidentialite'],
 ]
 
 export default function Footer() {

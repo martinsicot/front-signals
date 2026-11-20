@@ -9,144 +9,255 @@ export default function CGVPage() {
   return (
     <LegalPage title="Conditions Générales de Vente">
 
-      <Section title="1. Objet">
+      <Section title="Préambule">
         <p>
-          Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre{' '}
-          <strong><Placeholder label="RAISON SOCIALE" /></strong>, société <Placeholder label="SAS / SARL / EURL" />{' '}
-          au capital de <Placeholder label="MONTANT" /> €, immatriculée au RCS de{' '}
-          <Placeholder label="VILLE" /> sous le numéro <Placeholder label="XXX XXX XXX" />,{' '}
-          dont le siège social est situé <Placeholder label="ADRESSE COMPLÈTE" /> (ci-après « la Société »),
-          et tout acheteur professionnel ou particulier (ci-après « le Client ») passant commande
-          sur le site le-panneau.fr.
+          La société <strong><Placeholder label="NOM_SOCIETE" /></strong>,{' '}
+          <Placeholder label="FORME_JURIDIQUE" /> au capital de <Placeholder label="MONTANT_CAPITAL" /> €,
+          immatriculée au RCS sous le numéro <Placeholder label="SIRET" />, dont le siège social est situé{' '}
+          <Placeholder label="ADRESSE_SIEGE" /> (ci-après « Le Panneau » ou « le Vendeur »), exploite le site{' '}
+          <Placeholder label="URL_SITE" /> sous la marque commerciale <strong>Le Panneau</strong>.
         </p>
         <p>
-          Toute commande implique l'acceptation sans réserve des présentes CGV.
-          La Société se réserve le droit de modifier ses CGV à tout moment ; les CGV applicables
-          sont celles en vigueur à la date de la commande.
-        </p>
-      </Section>
-
-      <Section title="2. Produits et prix">
-        <p>
-          Les produits proposés sont conformes à la législation française en vigueur et aux normes
-          applicables (NF EN 12899-1, directive CE, etc.). Les photographies et descriptions sont
-          données à titre indicatif et ne sont pas contractuelles.
+          Le Panneau propose à la vente des panneaux publicitaires et signalétiques personnalisés (impression,
+          découpe, finition), fabriqués sur mesure à la commande.
         </p>
         <p>
-          Les prix sont indiqués en euros hors taxes (HT). La TVA applicable est de <strong>20 %</strong>{' '}
-          pour la signalisation routière et le mobilier urbain destinés à la vente en France
-          métropolitaine. Le montant TTC est affiché lors de la validation du panier.
-        </p>
-        <p>
-          La Société se réserve le droit de modifier ses prix à tout moment.
-          Les prix facturés sont ceux en vigueur au moment de la validation définitive de la commande.
-        </p>
-      </Section>
-
-      <Section title="3. Commandes">
-        <p>
-          Toute commande passée sur le site vaut acceptation des prix et des descriptions des produits.
-          La Société accusera réception de la commande par email dans un délai de <strong>24 heures ouvrées</strong>.
-        </p>
-        <p>
-          La Société se réserve le droit d'annuler toute commande pour laquelle il existerait un litige
-          relatif au paiement d'une commande antérieure ou en cas de rupture de stock.
-          Le Client en sera informé dans les meilleurs délais.
-        </p>
-        <p>
-          Pour les commandes faisant l'objet d'une demande de devis (commandes supérieures à 400 € HT
-          ou commandes sur-mesure), le contrat est conclu à la date d'acceptation du devis par le Client.
-        </p>
-      </Section>
-
-      <Section title="4. Paiement">
-        <p>
-          Le paiement est exigible à la commande. Les moyens de paiement acceptés sont :
-          carte bancaire (Visa, Mastercard, American Express) via notre prestataire sécurisé Stripe.
-        </p>
-        <p>
-          En cas de paiement par virement bancaire (sur devis uniquement), la commande est traitée
-          à réception du virement. Les coordonnées bancaires sont communiquées sur le devis.
-        </p>
-      </Section>
-
-      <Section title="5. Livraison">
-        <p>
-          Les livraisons sont effectuées à l'adresse indiquée par le Client lors de la commande,
-          en France métropolitaine uniquement sauf accord préalable.
-        </p>
-        <p>
-          Les délais de livraison sont donnés à titre indicatif : <strong><Placeholder label="X à Y jours ouvrés" /></strong>{' '}
-          à compter de la confirmation du paiement. En cas de retard, la Société en informera le Client
-          sans que ce retard puisse donner lieu à une indemnité ou à l'annulation de la commande,
-          sauf dépassement de 30 jours.
-        </p>
-        <p>
-          Les frais de livraison sont indiqués lors de la validation du panier.
-          Le transport est assuré par <Placeholder label="NOM DU TRANSPORTEUR" />.
-          À la livraison, le Client est tenu de vérifier l'état du colis en présence du transporteur
-          et d'émettre toute réserve nécessaire.
-        </p>
-      </Section>
-
-      <Section title="6. Droit de rétractation">
-        <p>
-          Conformément à l'article L221-18 du Code de la consommation, le Client particulier dispose
-          d'un délai de <strong>14 jours</strong> à compter de la réception des produits pour exercer
-          son droit de rétractation, sans avoir à justifier de motifs ni à payer de pénalités.
-        </p>
-        <p>
-          Ce droit ne s'applique pas aux professionnels, ni aux produits fabriqués sur mesure
-          ou personnalisés selon les spécifications du Client (article L221-28 du Code de la consommation).
-        </p>
-        <p>
-          Pour exercer ce droit, le Client doit notifier sa décision par email à{' '}
-          <a href="mailto:devis@le-panneau.fr" style={{ color: 'var(--verde)' }}>devis@le-panneau.fr</a>{' '}
-          avant l'expiration du délai. Les frais de retour sont à la charge du Client.
-        </p>
-      </Section>
-
-      <Section title="7. Garanties">
-        <p>
-          Les produits bénéficient de la garantie légale de conformité (articles L217-4 et suivants
-          du Code de la consommation) et de la garantie contre les vices cachés (articles 1641 et
-          suivants du Code civil).
-        </p>
-        <p>
-          En cas de défaut de conformité constaté dans les <strong>2 ans</strong> suivant la livraison,
-          le Client peut demander le remplacement ou la réparation du produit.
-        </p>
-      </Section>
-
-      <Section title="8. Responsabilité">
-        <p>
-          La Société ne saurait être tenue responsable des dommages résultant d'une mauvaise
-          utilisation des produits, d'une installation non conforme aux normes en vigueur,
-          ou du non-respect des réglementations locales relatives à la signalisation.
-        </p>
-        <p>
-          La responsabilité de la Société est limitée au montant de la commande concernée.
-        </p>
-      </Section>
-
-      <Section title="9. Données personnelles">
-        <p>
-          Les données collectées lors de la commande sont utilisées pour le traitement et le suivi
-          des commandes ainsi que pour la relation commerciale. Elles ne sont pas cédées à des tiers.
-          Pour plus d'informations, consultez notre{' '}
+          Les présentes CGV s'appliquent à toute commande passée sur le site, à l'exclusion de toute autre
+          condition. Elles sont indissociables de la{' '}
           <a href="/confidentialite" style={{ color: 'var(--verde)' }}>Politique de confidentialité</a>.
         </p>
       </Section>
 
-      <Section title="10. Litiges">
+      <Section title="Article 1 — Définitions">
+        <ul style={{ paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <li><strong>Client :</strong> toute personne physique ou morale passant commande sur le site, avec ou sans compte.</li>
+          <li><strong>Client consommateur :</strong> personne physique agissant en dehors de toute activité professionnelle (art. liminaire Code conso.).</li>
+          <li><strong>Client professionnel :</strong> personne agissant dans le cadre de son activité professionnelle.</li>
+          <li><strong>Commande :</strong> acte par lequel le Client sélectionne un Produit, renseigne ses paramètres de personnalisation et procède au paiement.</li>
+          <li><strong>Produits :</strong> panneaux fabriqués sur mesure selon les spécifications transmises par le Client (format, support, impression, découpe, finition, etc.).</li>
+          <li><strong>Parties :</strong> le Vendeur et le Client, désignés conjointement.</li>
+        </ul>
+      </Section>
+
+      <Section title="Article 2 — Objet et champ d'application">
         <p>
-          Les présentes CGV sont soumises au droit français. En cas de litige, une solution amiable
-          sera recherchée en priorité. À défaut, le litige sera soumis aux tribunaux compétents
-          du ressort du siège social de la Société.
+          Les présentes CGV régissent les ventes de Produits conclues à distance via le site{' '}
+          <Placeholder label="URL_SITE" />, que le Client dispose ou non d'un compte (guest checkout inclus).
         </p>
         <p>
-          Conformément à l'article L612-1 du Code de la consommation, le Client particulier peut
-          recourir gratuitement au médiateur de la consommation : <Placeholder label="NOM DU MÉDIATEUR — URL" />.
+          Toute Commande implique l'acceptation pleine et sans réserve des présentes CGV, matérialisée
+          par la case à cocher prévue à cet effet avant validation définitive.
+        </p>
+      </Section>
+
+      <Section title="Article 3 — Produits et commande">
+        <p>
+          Les Produits sont des panneaux personnalisés fabriqués à la commande. Les visuels illustratifs
+          n'ont qu'une valeur indicative ; le rendu final dépend des fichiers et paramètres transmis par le Client.
+        </p>
+        <p><strong>Le Client est seul responsable :</strong></p>
+        <ul style={{ paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 4 }}>
+          <li>de la conformité de ses fichiers graphiques (résolution, droits d'auteur, droit à l'image) ;</li>
+          <li>de l'exactitude des informations de personnalisation renseignées.</li>
+        </ul>
+        <p>Le processus de commande comprend : sélection du produit → personnalisation → vérification du récapitulatif → acceptation des CGV et renonciation au droit de rétractation → paiement → email de confirmation.</p>
+        <p>
+          La Commande est ferme et définitive dès confirmation du paiement. En cas d'erreur constatée,
+          le Client doit contacter le Vendeur dans les <strong>deux (2) heures</strong> à l'adresse{' '}
+          <a href={`mailto:`} style={{ color: 'var(--verde)' }}><Placeholder label="EMAIL_CONTACT" /></a>.
+        </p>
+        <p>
+          Le Vendeur se réserve le droit de refuser toute Commande pour motif légitime (fichiers non conformes,
+          contenu illicite, suspicion de fraude).
+        </p>
+      </Section>
+
+      <Section title="Article 4 — Prix">
+        <p>
+          Les prix sont indiqués en euros <strong>toutes taxes comprises (TTC)</strong>, TVA 20 % incluse,
+          hors frais de livraison. Les frais de livraison sont affichés séparément avant validation.
+        </p>
+        <p>
+          Le Vendeur se réserve le droit de modifier ses prix à tout moment. Le prix applicable est celui
+          en vigueur à la date de validation de la Commande. Une facture électronique est émise et envoyée
+          par email après chaque Commande.
+        </p>
+      </Section>
+
+      <Section title="Article 5 — Paiement">
+        <p>
+          Le paiement est exigible intégralement et comptant à la validation de la Commande. Le Vendeur
+          utilise la solution sécurisée <strong>Stripe</strong> (Stripe Payments Europe, Ltd.). Moyens acceptés :
+          carte bancaire (Visa, Mastercard, American Express) et tout autre moyen proposé par Stripe.
+        </p>
+        <p>
+          Les données bancaires sont transmises directement à Stripe et ne transitent pas par les serveurs
+          du Vendeur. Le Vendeur ne conserve aucune information bancaire.
+        </p>
+        <p>
+          En cas de refus de transaction, la Commande est automatiquement annulée et le Client en est informé par email.
+        </p>
+        <p style={{ fontSize: 13 }}>
+          <em>Clients professionnels uniquement —</em> En cas de paiement différé expressément convenu par écrit,
+          tout retard entraîne de plein droit des pénalités au taux de <strong>trois (3) fois le taux légal</strong> et
+          une indemnité forfaitaire de <strong>40 €</strong> (art. D. 441-5 Code de commerce).
+        </p>
+      </Section>
+
+      <Section title="Article 6 — Fabrication et délais">
+        <p>
+          Tous les Produits sont <strong>fabriqués sur mesure à la commande</strong>. La fabrication ne débute
+          qu'après confirmation du paiement et validation des fichiers.
+        </p>
+        <p>
+          Délai de fabrication indicatif : <strong><Placeholder label="DELAI_FABRICATION_JOURS" /> jours ouvrés</strong>{' '}
+          à compter de la confirmation de Commande. Ce délai est indicatif et peut varier selon la complexité
+          du Produit ou les contraintes de production.
+        </p>
+        <p>
+          Si un bon à tirer (BAT) est prévu, le délai ne commence à courir qu'à compter de sa validation
+          écrite par le Client.
+        </p>
+      </Section>
+
+      <Section title="Article 7 — Livraison">
+        <p>
+          Livraison sur <Placeholder label="ZONE_LIVRAISON — ex : France métropolitaine" />.
+          Délai indicatif : <strong><Placeholder label="DELAI_LIVRAISON_JOURS" /> jours ouvrés</strong> à compter
+          de l'expédition. Un email de suivi est envoyé au Client à l'expédition.
+        </p>
+        <p>
+          Le risque de perte ou de détérioration est transféré au Client consommateur à la prise de possession
+          physique du bien. Pour les Clients professionnels, le transfert s'opère dès remise au transporteur.
+        </p>
+        <p>
+          À réception, le Client doit vérifier l'état du colis. En cas de dommage apparent, il doit émettre
+          des réserves précises sur le bon de livraison et confirmer au transporteur par LRAR dans les{' '}
+          <strong>3 jours</strong>, et informer le Vendeur à <Placeholder label="EMAIL_RETOURS" />.
+        </p>
+      </Section>
+
+      <Section title="Article 8 — Droit de rétractation">
+        <p>
+          Conformément à l'article L. 221-18 du Code de la consommation, le consommateur dispose en principe
+          d'un délai de <strong>14 jours</strong> pour exercer son droit de rétractation.
+        </p>
+        <p style={{ background: 'var(--surface)', padding: '12px 16px', borderRadius: 6, border: '1px solid var(--border)' }}>
+          <strong>⚠️ Exception produits sur mesure — L. 221-28 3° du Code de la consommation</strong><br />
+          L'ensemble des Produits étant fabriqués selon les spécifications personnalisées du Client,{' '}
+          <strong>le droit de rétractation ne s'applique pas</strong>. Toute Commande validée et payée est
+          ferme et définitive. Cette renonciation est matérialisée par une case à cocher dédiée lors du
+          processus de commande.
+        </p>
+        <p>
+          Cette disposition ne prive pas le Client consommateur du bénéfice des garanties légales (art. 9).
+        </p>
+      </Section>
+
+      <Section title="Article 9 — Garanties légales">
+        <p>
+          <strong>Garantie légale de conformité</strong> (art. L. 217-4 et s. Code conso.) : le Client consommateur
+          dispose de <strong>2 ans</strong> à compter de la délivrance pour agir. Durant les 12 premiers mois,
+          il est dispensé de prouver l'existence du défaut. Il peut demander réparation, remplacement, réduction
+          de prix ou résolution du contrat.
+        </p>
+        <p>
+          <em>Attention :</em> un rendu conforme aux fichiers transmis mais non conforme aux attentes subjectives
+          du Client ne constitue pas un défaut de conformité.
+        </p>
+        <p>
+          <strong>Garantie contre les vices cachés</strong> (art. 1641 et s. Code civil) : le Client dispose de
+          2 ans à compter de la découverte du vice pour agir.
+        </p>
+        <p>
+          Pour mettre en œuvre une garantie, contacter le Vendeur à{' '}
+          <Placeholder label="EMAIL_RETOURS" /> avec le numéro de Commande, description du défaut et photos.
+        </p>
+      </Section>
+
+      <Section title="Article 10 — Retours et réclamations">
+        <p>
+          Toute réclamation doit être adressée à <Placeholder label="EMAIL_RETOURS" /> dans les{' '}
+          <Placeholder label="DELAI_RECLAMATION_JOURS — ex : 14" /> jours suivant la réception, avec numéro
+          de Commande, description du problème et photos.
+        </p>
+        <p>
+          <strong>Aucun retour physique n'est accepté sans accord préalable écrit du Vendeur.</strong>
+        </p>
+        <p>
+          En cas de litige, le Client consommateur peut recourir gratuitement au médiateur de la consommation :{' '}
+          <strong><Placeholder label="NOM_MEDIATEUR" /></strong> —{' '}
+          <Placeholder label="URL_MEDIATEUR" />.
+          Plateforme européenne de règlement en ligne :{' '}
+          <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--verde)' }}>
+            ec.europa.eu/consumers/odr
+          </a>.
+        </p>
+      </Section>
+
+      <Section title="Article 11 — Responsabilité">
+        <p>
+          La responsabilité du Vendeur est limitée aux <strong>dommages directs</strong> et plafonnée à la{' '}
+          <strong>valeur TTC de la Commande</strong> à l'origine du litige. Les dommages indirects (manque
+          à gagner, perte d'exploitation, préjudice d'image) sont exclus.
+        </p>
+        <p>
+          Le Client est seul responsable des contenus (visuels, textes, marques, logos) qu'il fournit
+          pour la personnalisation. Il garantit le Vendeur contre tout recours de tiers découlant de
+          l'utilisation de ces contenus.
+        </p>
+      </Section>
+
+      <Section title="Article 12 — Données personnelles">
+        <p>
+          Le responsable de traitement est <strong><Placeholder label="NOM_SOCIETE" /></strong> —{' '}
+          <Placeholder label="ADRESSE_SIEGE" /> — <Placeholder label="EMAIL_RGPD" />.
+        </p>
+        <p>
+          Les données collectées lors de la Commande sont utilisées pour : traitement et suivi des commandes,
+          facturation, emails transactionnels, prévention de la fraude et obligations légales. Durées de
+          conservation : 3 ans (données clients) et 10 ans (données de facturation).
+        </p>
+        <p>
+          Conformément au RGPD, vous disposez de droits d'accès, rectification, effacement, limitation,
+          portabilité et opposition. Pour les exercer : <Placeholder label="EMAIL_RGPD" />.
+          Réclamation possible auprès de la{' '}
+          <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--verde)' }}>CNIL</a>.
+        </p>
+        <p>
+          Pour plus de détails, consulter notre{' '}
+          <a href="/confidentialite" style={{ color: 'var(--verde)' }}>Politique de confidentialité</a>.
+        </p>
+      </Section>
+
+      <Section title="Article 13 — Force majeure">
+        <p>
+          Aucune des Parties ne pourra être tenue responsable de l'inexécution de ses obligations en cas
+          de force majeure au sens de l'article 1218 du Code civil (catastrophes naturelles, grèves générales,
+          pannes de réseaux, pandémies reconnues, décisions gouvernementales, etc.).
+        </p>
+        <p>
+          La Partie constatant l'événement en informe l'autre sans délai. Si la force majeure persiste
+          au-delà de <strong>30 jours calendaires</strong>, chaque Partie peut résilier la Commande concernée
+          sans indemnité, par notification écrite.
+        </p>
+      </Section>
+
+      <Section title="Article 14 — Dispositions diverses">
+        <p>
+          <strong>Droit applicable :</strong> droit français. <strong>Langue :</strong> français.
+        </p>
+        <p>
+          <strong>Juridiction — Consommateurs :</strong> tribunaux français compétents selon les règles de
+          droit commun (domicile du défendeur ou lieu de livraison, au choix du consommateur).
+        </p>
+        <p>
+          <strong>Juridiction — Professionnels :</strong> compétence exclusive du{' '}
+          <Placeholder label="JURIDICTION_COMPETENTE — ex : Tribunal de commerce de Paris" />.
+        </p>
+        <p>
+          Si l'une des clauses des présentes CGV est déclarée nulle, les autres demeurent en vigueur et
+          conservent leur plein effet.
         </p>
       </Section>
 
