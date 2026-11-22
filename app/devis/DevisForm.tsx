@@ -28,15 +28,39 @@ export default function DevisForm() {
   const { items, totalHT } = useCart()
 
   const [form, setForm] = useState({ nom: '', societe: '', email: '', telephone: '', message: '' })
+  const [errors, setErrors] = useState<{ email?: string; telephone?: string }>({})
   const [status, setStatus] = useState<'idle' | 'loading' | 'sent' | 'error'>('idle')
+
+  function validateEmail(value: string): string {
+    if (!value.trim()) return ''
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : 'Adresse email invalide'
+  }
+
+  function validatePhone(value: string): string {
+    if (!value.trim()) return ''
+    const digits = value.replace(/[\s.\-()]/g, '')
+    return /^(\+33|0033|0)[1-9]\d{8}$/.test(digits) ? '' : 'Numéro de téléphone invalide (ex : 06 12 34 56 78)'
+  }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target
     setForm(f => ({ ...f, [name]: value }))
+    if (name === 'email') setErrors(err => ({ ...err, email: validateEmail(value) }))
+    if (name === 'telephone') setErrors(err => ({ ...err, telephone: validatePhone(value) }))
+  }
+
+  function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
+    const { name, value } = e.target
+    if (name === 'email') setErrors(err => ({ ...err, email: validateEmail(value) }))
+    if (name === 'telephone') setErrors(err => ({ ...err, telephone: validatePhone(value) }))
   }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    const emailErr = validateEmail(form.email)
+    const phoneErr = validatePhone(form.telephone)
+    setErrors({ email: emailErr, telephone: phoneErr })
+    if (emailErr || phoneErr) return
     setStatus('loading')
 
     const payload: DevisPayload = {
@@ -167,18 +191,22 @@ export default function DevisForm() {
           <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             <span style={{ fontSize: 13, fontWeight: 500 }}>Email *</span>
             <input
-              name="email" type="email" required value={form.email} onChange={handleChange}
+              name="email" type="email" required value={form.email}
+              onChange={handleChange} onBlur={handleBlur}
               placeholder="jean@mairie.fr"
-              style={inputStyle}
+              style={{ ...inputStyle, borderColor: errors.email ? '#c0392b' : undefined }}
             />
+            {errors.email && <span style={{ fontSize: 12, color: '#c0392b' }}>{errors.email}</span>}
           </label>
           <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             <span style={{ fontSize: 13, fontWeight: 500 }}>Téléphone</span>
             <input
-              name="telephone" type="tel" value={form.telephone} onChange={handleChange}
+              name="telephone" type="tel" value={form.telephone}
+              onChange={handleChange} onBlur={handleBlur}
               placeholder="+33 6 12 34 56 78"
-              style={inputStyle}
+              style={{ ...inputStyle, borderColor: errors.telephone ? '#c0392b' : undefined }}
             />
+            {errors.telephone && <span style={{ fontSize: 12, color: '#c0392b' }}>{errors.telephone}</span>}
           </label>
         </div>
 
