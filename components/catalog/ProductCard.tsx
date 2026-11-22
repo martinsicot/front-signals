@@ -45,10 +45,7 @@ export default function ProductCard({ product }: { product: ProductListItem }) {
           fontFamily: "'Space Grotesk', sans-serif",
           fontSize: 14, fontWeight: 600, marginBottom: 4, letterSpacing: '-0.01em',
         }}>{product.name}</h3>
-        <p style={{
-          fontSize: 12, color: 'var(--ink-muted)', lineHeight: 1.5,
-          flex: 1, marginBottom: 14,
-        }}>{product.type}</p>
+        <div style={{ flex: 1 }} />
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{
             fontFamily: "'Space Grotesk', sans-serif",
