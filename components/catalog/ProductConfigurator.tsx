@@ -315,7 +315,7 @@ export default function ProductConfigurator({ product }: Props) {
           <svg width={15} height={15} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <path d="M1 3h10v8H1zM11 6h3l2 2v3h-5V6z" /><circle cx="4" cy="12" r="1.2" /><circle cx="13" cy="12" r="1.2" />
           </svg>
-          Expédition sous <strong style={{ marginLeft: 4 }}>{matchingVariant?.delai ?? '3 jours ouvrés'}</strong>
+          Expédition sous <strong style={{ marginLeft: 4 }}>{matchingVariant?.delai ?? '5 à 6 jours'}</strong>
         </div>
 
         {/* Quantity + CTA */}
