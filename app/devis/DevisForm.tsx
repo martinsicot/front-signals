@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { isValidPhoneNumber } from 'libphonenumber-js'
+import type { CountryCode } from 'libphonenumber-js'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { useCart } from '@/context/CartContext'
@@ -40,7 +41,8 @@ export default function DevisForm() {
   function validatePhone(value: string): string {
     if (!value.trim()) return ''
     try {
-      return isValidPhoneNumber(value) ? '' : 'Numéro de téléphone invalide (ex : +33 6 12 34 56 78, +32 2 …)'
+      const defaultCountry: CountryCode = 'FR'
+      return isValidPhoneNumber(value, defaultCountry) ? '' : 'Numéro de téléphone invalide (ex : 06 12 34 56 78 ou +44 7700 …)'
     } catch {
       return 'Numéro de téléphone invalide'
     }
