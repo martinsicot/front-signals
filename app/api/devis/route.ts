@@ -16,8 +16,7 @@ export interface DevisPayload {
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-// Switch to a verified domain address once le-panneau.fr is configured in Resend
-const FROM = 'onboarding@resend.dev'
+const FROM = 'devis@le-panneau.fr'
 const TO = 'martin@sicotsoft.com'
 
 function buildHtml(body: DevisPayload): string {
