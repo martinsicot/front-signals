@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { isValidPhoneNumber } from 'libphonenumber-js'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { useCart } from '@/context/CartContext'
@@ -38,8 +39,11 @@ export default function DevisForm() {
 
   function validatePhone(value: string): string {
     if (!value.trim()) return ''
-    const digits = value.replace(/[\s.\-()]/g, '')
-    return /^(\+33|0033|0)[1-9]\d{8}$/.test(digits) ? '' : 'Numéro de téléphone invalide (ex : 06 12 34 56 78)'
+    try {
+      return isValidPhoneNumber(value) ? '' : 'Numéro de téléphone invalide (ex : +33 6 12 34 56 78, +32 2 …)'
+    } catch {
+      return 'Numéro de téléphone invalide'
+    }
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
