@@ -13,13 +13,14 @@ export const metadata = {
 export default async function CataloguePage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>
+  searchParams: Promise<{ q?: string; sort?: string }>
 }) {
-  const { q } = await searchParams
+  const { q, sort } = await searchParams
   const query = q?.trim() || undefined
+  const sortParam = sort?.trim() || undefined
 
   const [productsPage, categories] = await Promise.all([
-    api.products({ q: query }),
+    api.products({ q: query, sort: sortParam }),
     api.categories(),
   ])
 
@@ -29,7 +30,7 @@ export default async function CataloguePage({
       <div style={{ marginBottom: 32 }}>
         <p className="label" style={{ marginBottom: 6 }}>Catalogue</p>
         <h1 style={{ fontSize: 32, letterSpacing: '-0.02em' }}>
-          {query ? `Résultats pour « ${query} »` : 'Tous les produits'}
+          {query ? `Résultats pour « ${query} »` : sortParam === 'new' ? 'Nouveautés' : 'Tous les produits'}
         </h1>
         <p style={{ fontSize: 14, color: 'var(--ink-muted)', marginTop: 8 }}>
           {productsPage.count} référence{productsPage.count > 1 ? 's' : ''}
@@ -46,10 +47,11 @@ export default async function CataloguePage({
         {/* Grid */}
         <div style={{ flex: 1 }}>
           <InfiniteProductGrid
-            key={query ?? 'all'}
+            key={`${query ?? 'all'}-${sortParam ?? ''}`}
             initialProducts={productsPage.results}
             initialHasMore={productsPage.next !== null}
             q={query}
+            sort={sortParam}
           />
         </div>
       </div>

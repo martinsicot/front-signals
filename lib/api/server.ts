@@ -11,11 +11,12 @@ async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
 
 export const api = {
   categories: () => apiFetch<Category[]>('/categories/'),
-  products: (params?: { category?: string; q?: string; page?: number }) => {
+  products: (params?: { category?: string; q?: string; page?: number; sort?: string }) => {
     const qs = new URLSearchParams()
     if (params?.category) qs.set('category', params.category)
     if (params?.q) qs.set('q', params.q)
     if (params?.page) qs.set('page', String(params.page))
+    if (params?.sort === 'new') qs.set('ordering', '-created_at')
     const query = qs.toString() ? `?${qs}` : ''
     return apiFetch<PaginatedResponse<ProductListItem>>(`/products/${query}`)
   },

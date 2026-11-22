@@ -9,9 +9,10 @@ type Props = {
   initialHasMore: boolean
   category?: string
   q?: string
+  sort?: string
 }
 
-export default function InfiniteProductGrid({ initialProducts, initialHasMore, category, q }: Props) {
+export default function InfiniteProductGrid({ initialProducts, initialHasMore, category, q, sort }: Props) {
   const [products, setProducts] = useState<ProductListItem[]>(initialProducts)
   const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(initialHasMore)
@@ -31,6 +32,7 @@ export default function InfiniteProductGrid({ initialProducts, initialHasMore, c
     const qs = new URLSearchParams({ page: String(nextPage) })
     if (category) qs.set('category', category)
     if (q) qs.set('q', q)
+    if (sort === 'new') qs.set('ordering', '-created_at')
 
     try {
       const res = await fetch(`/api/products?${qs}`)
@@ -48,7 +50,7 @@ export default function InfiniteProductGrid({ initialProducts, initialHasMore, c
     } finally {
       loadingRef.current = false
     }
-  }, [page, hasMore, category, q])
+  }, [page, hasMore, category, q, sort])
 
   useEffect(() => {
     const sentinel = sentinelRef.current
