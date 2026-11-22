@@ -76,6 +76,7 @@ export interface Variant {
   weight_kg: string | null
   is_active: boolean
   attributes: VariantAttribute[]
+  delai?: string
 }
 
 export interface ProductDetail {

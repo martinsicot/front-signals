@@ -239,8 +239,14 @@ export default function ProductConfigurator({ product }: Props) {
         }}>{product.name}</h1>
 
         {product.base_code && (
-          <p style={{ fontSize: 12, color: 'var(--ink-muted)', marginBottom: 16 }}>
+          <p style={{ fontSize: 12, color: 'var(--ink-muted)', marginBottom: 12 }}>
             Réf. {product.base_code}
+          </p>
+        )}
+
+        {product.description && (
+          <p style={{ fontSize: 14, color: 'var(--ink-muted)', lineHeight: 1.65, marginBottom: 20 }}>
+            {product.description}
           </p>
         )}
 
@@ -279,13 +285,7 @@ export default function ProductConfigurator({ product }: Props) {
               </p>
             )}
           </>
-        ) : (
-          product.description && (
-            <p style={{ fontSize: 14, color: 'var(--ink-muted)', lineHeight: 1.65, marginBottom: 24 }}>
-              {product.description}
-            </p>
-          )
-        )}
+        ) : null}
 
         {/* Specs row (selected variant) */}
         {matchingVariant && (
@@ -315,7 +315,7 @@ export default function ProductConfigurator({ product }: Props) {
           <svg width={15} height={15} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
             <path d="M1 3h10v8H1zM11 6h3l2 2v3h-5V6z" /><circle cx="4" cy="12" r="1.2" /><circle cx="13" cy="12" r="1.2" />
           </svg>
-          Expédition sous <strong style={{ marginLeft: 4 }}>3 jours ouvrés</strong>
+          Expédition sous <strong style={{ marginLeft: 4 }}>{matchingVariant?.delai ?? '3 jours ouvrés'}</strong>
         </div>
 
         {/* Quantity + CTA */}
