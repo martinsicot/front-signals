@@ -254,28 +254,16 @@ export default function ProductDetailV3({ product }: Props) {
               </div>
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-              <button
-                type="button"
-                onClick={handleAdd}
-                disabled={hasVariants && !matchingVariant}
-                aria-live="polite"
-                style={{
-                  flex: '2 1 200px', minHeight: 56, border: 0, borderRadius: 2,
-                  background: added ? '#3A3E43' : '#FFD400',
-                  color: '#111315', fontFamily: 'inherit',
-                  fontWeight: 800, fontSize: 17, cursor: 'pointer',
-                }}
-              >
-                {added ? 'Ajouté ✓' : 'Ajouter au panier'}
-              </button>
-              <button type="button" style={{
-                flex: '1 1 160px', minHeight: 56,
-                border: '1.5px solid #FFFFFF', borderRadius: 2,
-                background: 'transparent', color: '#FFFFFF',
-                fontFamily: 'inherit', fontWeight: 800, fontSize: 16, cursor: 'pointer',
+              <div style={{
+                flex: '2 1 200px', minHeight: 56, borderRadius: 2,
+                background: 'rgba(255,255,255,0.1)',
+                border: '1.5px solid rgba(255,255,255,0.3)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: '#FFFFFF', fontFamily: 'inherit', fontWeight: 600, fontSize: 15,
+                textAlign: 'center', padding: '0 16px',
               }}>
-                Ajouter au devis
-              </button>
+                Ouverture prochaine — <a href="/devis" style={{ color: '#FFD400', textDecoration: 'none', fontWeight: 700, marginLeft: 4 }}>contactez-nous</a>
+              </div>
             </div>
           </div>
         </div>

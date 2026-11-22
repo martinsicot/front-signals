@@ -240,18 +240,15 @@ export default function PanierV3Page() {
               </span>
             </div>
 
-            <Link href="/v3/checkout" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 12,
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
               minHeight: 56, padding: '0 32px',
-              background: '#FFD400', color: '#111315',
-              fontWeight: 800, fontSize: 17,
-              textDecoration: 'none', borderRadius: 2,
+              background: 'rgba(0,0,0,0.06)', borderRadius: 2,
+              fontWeight: 600, fontSize: 15, color: '#111315',
+              textAlign: 'center',
             }}>
-              Procéder au paiement
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="square" aria-hidden="true">
-                <line x1="4" y1="12" x2="19" y2="12" /><polyline points="13,6 19,12 13,18" />
-              </svg>
-            </Link>
+              Ouverture prochaine — <a href="/v3/devis" style={{ color: '#1f8a6e', textDecoration: 'none', fontWeight: 700, marginLeft: 4 }}>contactez-nous</a>
+            </div>
           </div>
         </>
       )}

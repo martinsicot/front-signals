@@ -219,13 +219,14 @@ export default function CartPage() {
               </div>
             )}
 
-            <Link href="/checkout" style={{
-              padding: '14px 28px', background: 'var(--verde)', color: 'white',
-              fontFamily: "'Space Grotesk', sans-serif", fontSize: 15, fontWeight: 600,
-              borderRadius: 'var(--r)', textDecoration: 'none',
+            <div style={{
+              padding: '14px 28px', background: 'var(--surface-alt)',
+              fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, fontWeight: 500,
+              borderRadius: 'var(--r)', border: '1px solid var(--border)',
+              color: 'var(--ink-muted)', textAlign: 'center',
             }}>
-              Procéder au paiement →
-            </Link>
+              Ouverture prochaine — <a href="/devis" style={{ color: 'var(--verde)', textDecoration: 'none', fontWeight: 600 }}>contactez-nous</a>
+            </div>
           </div>
         </>
       )}

@@ -337,25 +337,16 @@ export default function ProductConfigurator({ product }: Props) {
             >+</button>
           </div>
 
-          <button
-            type="button"
-            onClick={handleAdd}
-            disabled={hasVariants && !matchingVariant}
-            aria-live="polite"
-            style={{
-              flex: 1, padding: '13px 20px',
-              background: hasVariants && !matchingVariant
-                ? 'var(--border)'
-                : added ? 'var(--ink)' : 'var(--verde)',
-              color: 'white',
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontSize: 15, fontWeight: 600, borderRadius: 'var(--r)',
-              border: 'none', cursor: hasVariants && !matchingVariant ? 'not-allowed' : 'pointer',
-              transition: 'background .15s',
-            }}
-          >
-            {added ? 'Ajouté ✓' : 'Ajouter au panier'}
-          </button>
+          <div style={{
+            flex: 1, padding: '13px 20px',
+            background: 'var(--surface-alt)',
+            color: 'var(--ink-muted)',
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: 14, fontWeight: 500, borderRadius: 'var(--r)',
+            border: '1px solid var(--border)', textAlign: 'center',
+          }}>
+            Ouverture prochaine — <a href="/devis" style={{ color: 'var(--verde)', textDecoration: 'none', fontWeight: 600 }}>contactez-nous</a>
+          </div>
         </div>
 
         <a href="/devis" style={{
