@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useSession } from 'next-auth/react'
-import { useTheme } from '@/components/ThemeProvider'
 import { useCart } from '@/context/CartContext'
 import SearchOverlay from '@/components/search/SearchOverlay'
 
@@ -16,7 +15,6 @@ const NAV_LINKS: [string, string][] = [
 ]
 
 export default function Navbar() {
-  const { toggle, theme } = useTheme()
   const { totalItems } = useCart()
   const { data: session } = useSession()
   const pathname = usePathname()
@@ -162,20 +160,6 @@ export default function Navbar() {
             )}
           </Link>
 
-          {/* Theme toggle — desktop only */}
-          <button onClick={toggle} aria-label="Basculer le thème"
-            className="nav-desktop-only"
-            style={{
-              width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center',
-              borderRadius: 'var(--r)', color: 'var(--ink-muted)',
-              border: '1px solid var(--border)', background: 'transparent',
-            }}>
-            <svg width={16} height={16} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
-              <circle cx={8} cy={8} r={3} />
-              <path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3.1 3.1l1 1M11.9 11.9l1 1M11.9 3.1l-1 1M3.1 11.9l1-1" />
-            </svg>
-          </button>
-
           {/* Devis CTA — desktop only */}
           <Link href="/devis"
             className="nav-desktop-only"
@@ -291,31 +275,16 @@ export default function Navbar() {
               Rechercher
             </button>
 
-            {/* Bottom row: theme toggle + devis CTA */}
-            <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
-              <button
-                onClick={toggle}
-                aria-label="Basculer le thème"
-                style={{
-                  width: 44, height: 44, flexShrink: 0,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  borderRadius: 'var(--r)', color: 'var(--ink-muted)',
-                  border: '1px solid var(--border)', background: 'transparent',
-                }}
-              >
-                <svg width={16} height={16} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round">
-                  <circle cx={8} cy={8} r={3} />
-                  <path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3.1 3.1l1 1M11.9 11.9l1 1M11.9 3.1l-1 1M3.1 11.9l1-1" />
-                </svg>
-              </button>
+            {/* Bottom row: devis CTA */}
+            <div style={{ marginTop: 12 }}>
               <Link
                 href="/devis"
                 onClick={() => setMobileOpen(false)}
                 style={{
-                  flex: 1, padding: '12px 16px', textAlign: 'center',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  padding: '12px 16px', textAlign: 'center',
                   background: 'var(--ink)', color: 'var(--bg)',
                   fontSize: 15, fontWeight: 600, borderRadius: 'var(--r)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}
               >
                 Demander un devis
