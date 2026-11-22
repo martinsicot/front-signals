@@ -6,8 +6,8 @@ import InfiniteProductGrid from '@/components/catalog/InfiniteProductGrid'
 import CatalogSearchBar from '@/components/search/CatalogSearchBar'
 
 export const metadata = {
-  title: 'Catalogue — Le Panneau',
-  description: 'Tous nos panneaux de signalisation, mobilier urbain et équipements de sécurité.',
+  title: 'Catalogue panneaux de signalisation — Le Panneau',
+  description: '222 références de panneaux de signalisation routière conformes NF EN 12899-1. Danger, obligation, direction, balisage. Prix affichés, expédition 3 jours ouvrés.',
 }
 
 export default async function CataloguePage({

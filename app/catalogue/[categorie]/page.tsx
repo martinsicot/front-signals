@@ -15,8 +15,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cat = categories.find(c => c.slug === categorie)
   if (!cat) return {}
   return {
-    title: `${cat.name} — Le Panneau`,
-    description: cat.meta_description || cat.description,
+    title: `Panneaux ${cat.name} — Conformes NF EN 12899-1 | Le Panneau`,
+    description: cat.meta_description || cat.description ||
+      `Achetez vos panneaux de signalisation ${cat.name.toLowerCase()} conformes NF EN 12899-1. Prix affichés, classes 1 et 2 disponibles, expédition sous 3 jours ouvrés.`,
   }
 }
 
