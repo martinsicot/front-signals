@@ -108,13 +108,13 @@ export default function ProductConfigurator({ product }: Props) {
     })
   }, [variants])
 
-  // Default to the cheapest active variant (prefer variants that have a price).
+  // Default to the cheapest active variant, using price_ht (same field as min_price on the catalog).
   const defaultVariant = useMemo(() => {
-    const priced = variants.filter(v => v.price != null && !Number.isNaN(parseFloat(v.price)))
+    const priced = variants.filter(v => v.price_ht != null && !Number.isNaN(parseFloat(v.price_ht)))
     const pool = priced.length > 0 ? priced : variants
     return pool.reduce<Variant | null>((cheapest, v) => {
       if (!cheapest) return v
-      return parseFloat(v.price) < parseFloat(cheapest.price) ? v : cheapest
+      return parseFloat(v.price_ht) < parseFloat(cheapest.price_ht) ? v : cheapest
     }, null)
   }, [variants])
 

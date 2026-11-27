@@ -41,9 +41,9 @@ export default function ProductDetailV3({ product }: Props) {
   }, [variants])
 
   const defaultVariant = useMemo(() => {
-    const priced = variants.filter(v => !Number.isNaN(parseFloat(v.price)))
+    const priced = variants.filter(v => !Number.isNaN(parseFloat(v.price_ht)))
     const pool = priced.length ? priced : variants
-    return pool.reduce<Variant | null>((best, v) => !best || parseFloat(v.price) < parseFloat(best.price) ? v : best, null)
+    return pool.reduce<Variant | null>((best, v) => !best || parseFloat(v.price_ht) < parseFloat(best.price_ht) ? v : best, null)
   }, [variants])
 
   const [selected, setSelected] = useState<Record<string, string>>(() => defaultVariant ? toSelection(defaultVariant) : {})
